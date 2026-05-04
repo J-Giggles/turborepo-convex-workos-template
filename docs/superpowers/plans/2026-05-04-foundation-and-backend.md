@@ -251,6 +251,8 @@ git commit -m "chore: initialize pnpm + turborepo workspace"
 
 - [ ] **Step 2.4: Write `packages/typescript-config/nextjs.json`**
 
+`module` and `moduleResolution` are inherited from `base.json` — only override compilerOptions that genuinely differ for Next.js consumers.
+
 ```json
 {
   "$schema": "https://json.schemastore.org/tsconfig",
@@ -258,8 +260,6 @@ git commit -m "chore: initialize pnpm + turborepo workspace"
   "extends": "./base.json",
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "ES2022"],
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
     "jsx": "preserve",
     "allowJs": true,
     "noEmit": true,

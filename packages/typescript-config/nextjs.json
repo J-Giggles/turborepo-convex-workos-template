@@ -4,8 +4,6 @@
   "extends": "./base.json",
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "ES2022"],
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
     "jsx": "preserve",
     "allowJs": true,
     "noEmit": true,

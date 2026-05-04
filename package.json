@@ -1,0 +1,27 @@
+{
+  "name": "turborepo-convex-workos-template",
+  "private": true,
+  "version": "0.0.0",
+  "engines": {
+    "node": ">=20.19.4"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "dev:web": "turbo run dev --filter=@repo/backend --filter=website --filter=dashboard --filter=tenant",
+    "dev:native": "turbo run dev --filter=@repo/backend --filter=native",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "test": "turbo run test",
+    "convex:setup": "pnpm --filter @repo/backend convex:setup",
+    "convex:dev": "pnpm --filter @repo/backend dev"
+  },
+  "devDependencies": {
+    "prettier": "^3.7.4",
+    "turbo": "^2.7.5",
+    "typescript": "^5.9.3"
+  }
+}

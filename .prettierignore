@@ -1,0 +1,10 @@
+node_modules
+.next
+.turbo
+dist
+coverage
+pnpm-lock.yaml
+**/_generated
+ios/Pods
+android/.gradle
+android/build

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { slugify } from './workosSync';
+import { slugify } from '../convex/workosSync';
 
 describe('slugify', () => {
   it('lowercases and replaces spaces with hyphens', () => {

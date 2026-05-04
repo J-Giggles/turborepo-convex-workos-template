@@ -28,9 +28,9 @@
     "convex": "^1.29.3"
   },
   "devDependencies": {
-    "@edge-runtime/vm": "^5.0.0",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@types/node": "^25.6.0",
     "convex-test": "^0.0.34",
     "typescript": "^5.9.3",
     "vitest": "^2.1.5"

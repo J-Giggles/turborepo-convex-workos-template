@@ -23,6 +23,7 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@convex-dev/migrations": "^0.3.4",
     "@convex-dev/workos-authkit": "^0.1.5",
     "@workos-inc/node": "^7.23.0",
     "convex": "^1.29.3"

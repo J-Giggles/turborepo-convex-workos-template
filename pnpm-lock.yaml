@@ -20,6 +20,9 @@ importers:
 
   packages/backend:
     dependencies:
+      '@convex-dev/migrations':
+        specifier: ^0.3.4
+        version: 0.3.4(convex@1.37.0(react@19.2.5))
       '@convex-dev/workos-authkit':
         specifier: ^0.1.5
         version: 0.1.7(@types/node@25.6.0)(@workos-inc/authkit-react@0.11.0(react@19.2.5))(@workos-inc/node@7.82.0)(convex@1.37.0(react@19.2.5))(jiti@2.6.1)(react@19.2.5)(tsx@4.21.0)(typescript@5.9.3)(zod@3.25.76)
@@ -128,6 +131,11 @@ packages:
   '@babel/types@7.29.0':
     resolution: {integrity: sha512-LwdZHpScM4Qz8Xw2iKSzS+cfglZzJGvofQICy7W7v4caru4EaAmyUuO6BGrbyQ2mYV11W0U8j5mBhd14dd3B0A==}
     engines: {node: '>=6.9.0'}
+
+  '@convex-dev/migrations@0.3.4':
+    resolution: {integrity: sha512-fCUkc4hDzkZTgxicjV1WN4QfUdDDPPrMtvC7VgSLTGssg1B8pm+XlPC6NbZ2Aes38Xf5iiodX+y8VnU96narKQ==}
+    peerDependencies:
+      convex: ^1.24.8
 
   '@convex-dev/workos-authkit@0.1.7':
     resolution: {integrity: sha512-7JrANzGZMaWxaCP5f8ZYEkxqNp/hP3zAFzu2TNhOalP6lEHsIingncwIiRMQNeToPDBkAhwPgMcIGwQMn2OH9A==}
@@ -2605,6 +2613,10 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
+
+  '@convex-dev/migrations@0.3.4(convex@1.37.0(react@19.2.5))':
+    dependencies:
+      convex: 1.37.0(react@19.2.5)
 
   '@convex-dev/workos-authkit@0.1.7(@types/node@25.6.0)(@workos-inc/authkit-react@0.11.0(react@19.2.5))(@workos-inc/node@7.82.0)(convex@1.37.0(react@19.2.5))(jiti@2.6.1)(react@19.2.5)(tsx@4.21.0)(typescript@5.9.3)(zod@3.25.76)':
     dependencies:

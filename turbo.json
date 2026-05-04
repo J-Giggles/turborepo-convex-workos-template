@@ -1,5 +1,31 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": [
+    "CONVEX_DEPLOYMENT",
+    "CONVEX_URL",
+    "CONVEX_DEPLOY_KEY",
+    "NEXT_PUBLIC_CONVEX_URL",
+    "WORKOS_AUTHKIT_DOMAIN",
+    "WORKOS_CLIENT_ID",
+    "WORKOS_API_KEY",
+    "WORKOS_WEBHOOK_SECRET",
+    "WORKOS_COOKIE_PASSWORD",
+    "WORKOS_REDIRECT_URI",
+    "NEXT_PUBLIC_AUTHKIT_DOMAIN",
+    "VERCEL_API_TOKEN",
+    "VERCEL_TEAM_ID",
+    "VERCEL_PROJECT_ID_TENANT",
+    "NEXT_PUBLIC_SITE_URL",
+    "NEXT_PUBLIC_DASHBOARD_URL",
+    "NEXT_PUBLIC_PLATFORM_ROOT",
+    "AUTHKIT_DOMAIN",
+    "AUTHKIT_REDIRECT_URI",
+    "RESEND_API_KEY",
+    "R2_ENDPOINT",
+    "R2_ACCESS_KEY_ID",
+    "R2_SECRET_ACCESS_KEY",
+    "R2_BUCKET"
+  ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],

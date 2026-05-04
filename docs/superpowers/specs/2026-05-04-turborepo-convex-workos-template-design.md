@@ -198,11 +198,12 @@ Installed and wired in `packages/backend/convex/convex.config.ts`:
 |---|---|---|
 | WorkOS AuthKit | `@convex-dev/workos-authkit` | Token validation (§6) |
 | Migrations | `@convex-dev/migrations` | Widen→migrate→narrow workflow; ship one example migration |
-| Rate Limiter | `@convex-dev/rate-limiter` | Sliding-window limit on public tenant queries + WorkOS callback |
-| Crons | `@convex-dev/crons` | Daily `reconcileMembers` cron + custom-domain verification cron |
+| Rate Limiter | `@convex-dev/rate-limiter` | Token-bucket limit on public tenant queries + WorkOS callback |
 | Aggregate | `@convex-dev/aggregate` | `postsByOrg` aggregate; dashboard home reads counts |
-| R2 | `@convex-dev/r2` | Optional file uploads; env-gated, no-op when `R2_*` unset |
+| R2 | `@convex-dev/r2` | Optional file uploads; env-gated, no-op when `R2_ENDPOINT`/`R2_*` unset |
 | Resend | `@convex-dev/resend` | Transactional email; env-gated, no-op when `RESEND_API_KEY` unset |
+
+Crons: uses Convex's built-in `cronJobs()` API (from `convex/server`) via `convex/crons.ts`. The `@convex-dev/crons` component was considered but the built-in pattern is the documented approach per Convex's AGENTS guidelines, so the component is *not* installed.
 
 **Deliberately skipped** (add at fork time):
 

@@ -14,8 +14,8 @@
     "env:check": "pnpm --filter @repo/env check",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
-    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,jsonc,yaml,yml,md,css}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,jsonc,yaml,yml,md,css}\"",
     "test": "turbo run test",
     "convex:setup": "pnpm --filter @repo/backend convex:setup",
     "convex:dev": "pnpm --filter @repo/backend dev"

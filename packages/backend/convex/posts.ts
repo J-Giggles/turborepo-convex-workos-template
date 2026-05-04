@@ -94,6 +94,11 @@ export const remove = mutation({
   },
 });
 
+// `check()` enforces the limit but does not consume tokens (queries can't run
+// mutations). Without a paired consumer the bucket never depletes — fine as a
+// throttling demo, but for real abuse protection front this with an action
+// that calls `rateLimiter.limit(...)` first, or schedule a consumer via
+// `ctx.scheduler.runAfter` from the dashboard's read path.
 export const listPublishedByHost = query({
   args: { host: v.string() },
   handler: async (ctx, { host }) => {

@@ -23,11 +23,12 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "convex": "^1.29.3",
     "@convex-dev/workos-authkit": "^0.1.5",
-    "@workos-inc/node": "^7.23.0"
+    "@workos-inc/node": "^7.23.0",
+    "convex": "^1.29.3"
   },
   "devDependencies": {
+    "@edge-runtime/vm": "^5.0.0",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "convex-test": "^0.0.34",

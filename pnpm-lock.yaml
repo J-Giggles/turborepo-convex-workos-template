@@ -22,7 +22,7 @@ importers:
     dependencies:
       '@convex-dev/workos-authkit':
         specifier: ^0.1.5
-        version: 0.1.7(@workos-inc/authkit-react@0.11.0(react@19.2.5))(@workos-inc/node@7.82.0)(convex@1.37.0(react@19.2.5))(jiti@2.6.1)(react@19.2.5)(typescript@5.9.3)(zod@3.25.76)
+        version: 0.1.7(@edge-runtime/vm@5.0.0)(@workos-inc/authkit-react@0.11.0(react@19.2.5))(@workos-inc/node@7.82.0)(convex@1.37.0(react@19.2.5))(jiti@2.6.1)(react@19.2.5)(typescript@5.9.3)(zod@3.25.76)
       '@workos-inc/node':
         specifier: ^7.23.0
         version: 7.82.0
@@ -30,6 +30,9 @@ importers:
         specifier: ^1.29.3
         version: 1.37.0(react@19.2.5)
     devDependencies:
+      '@edge-runtime/vm':
+        specifier: ^5.0.0
+        version: 5.0.0
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
@@ -44,7 +47,7 @@ importers:
         version: 5.9.3
       vitest:
         specifier: ^2.1.5
-        version: 2.1.9
+        version: 2.1.9(@edge-runtime/vm@5.0.0)
 
   packages/env:
     dependencies:
@@ -139,6 +142,14 @@ packages:
     peerDependencies:
       convex: ^1.31.7
       convex-helpers: ^0.1.94
+
+  '@edge-runtime/primitives@6.0.0':
+    resolution: {integrity: sha512-FqoxaBT+prPBHBwE1WXS1ocnu/VLTQyZ6NMUBAdbP7N2hsFTTxMC/jMu2D/8GAlMQfxeuppcPuCUk/HO3fpIvA==}
+    engines: {node: '>=18'}
+
+  '@edge-runtime/vm@5.0.0':
+    resolution: {integrity: sha512-NKBGBSIKUG584qrS1tyxVpX/AKJKQw5HgjYEnPLC0QsTw79JrGn+qUr8CXFb955Iy7GUdiiUv1rJ6JBGvaKb6w==}
+    engines: {node: '>=18'}
 
   '@emnapi/core@1.10.0':
     resolution: {integrity: sha512-yq6OkJ4p82CAfPl0u9mQebQHKPJkY7WrIuk205cTYnYe+k2Z8YBh11FrbRG/H6ihirqcacOgl2BIO8oyMQLeXw==}
@@ -2580,9 +2591,9 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
 
-  '@convex-dev/workos-authkit@0.1.7(@workos-inc/authkit-react@0.11.0(react@19.2.5))(@workos-inc/node@7.82.0)(convex@1.37.0(react@19.2.5))(jiti@2.6.1)(react@19.2.5)(typescript@5.9.3)(zod@3.25.76)':
+  '@convex-dev/workos-authkit@0.1.7(@edge-runtime/vm@5.0.0)(@workos-inc/authkit-react@0.11.0(react@19.2.5))(@workos-inc/node@7.82.0)(convex@1.37.0(react@19.2.5))(jiti@2.6.1)(react@19.2.5)(typescript@5.9.3)(zod@3.25.76)':
     dependencies:
-      '@convex-dev/workos': 0.0.1(convex@1.37.0(react@19.2.5))(jiti@2.6.1)(react@19.2.5)(typescript@5.9.3)
+      '@convex-dev/workos': 0.0.1(@edge-runtime/vm@5.0.0)(convex@1.37.0(react@19.2.5))(jiti@2.6.1)(react@19.2.5)(typescript@5.9.3)
       '@convex-dev/workpool': 0.4.6(convex-helpers@0.1.115(convex@1.37.0(react@19.2.5))(react@19.2.5)(typescript@5.9.3)(zod@3.25.76))(convex@1.37.0(react@19.2.5))
       '@workos-inc/authkit-react': 0.11.0(react@19.2.5)
       '@workos-inc/node': 7.82.0
@@ -2622,13 +2633,13 @@ snapshots:
       - yaml
       - zod
 
-  '@convex-dev/workos@0.0.1(convex@1.37.0(react@19.2.5))(jiti@2.6.1)(react@19.2.5)(typescript@5.9.3)':
+  '@convex-dev/workos@0.0.1(@edge-runtime/vm@5.0.0)(convex@1.37.0(react@19.2.5))(jiti@2.6.1)(react@19.2.5)(typescript@5.9.3)':
     dependencies:
       '@workos-inc/authkit-react': 0.11.0(react@19.2.5)
       convex: 1.37.0(react@19.2.5)
       react: 19.2.5
       tsdown: 0.12.9(typescript@5.9.3)
-      vitest: 3.2.4(jiti@2.6.1)
+      vitest: 3.2.4(@edge-runtime/vm@5.0.0)(jiti@2.6.1)
     transitivePeerDependencies:
       - '@arethetypeswrong/core'
       - '@edge-runtime/vm'
@@ -2662,6 +2673,12 @@ snapshots:
     dependencies:
       convex: 1.37.0(react@19.2.5)
       convex-helpers: 0.1.115(convex@1.37.0(react@19.2.5))(react@19.2.5)(typescript@5.9.3)(zod@3.25.76)
+
+  '@edge-runtime/primitives@6.0.0': {}
+
+  '@edge-runtime/vm@5.0.0':
+    dependencies:
+      '@edge-runtime/primitives': 6.0.0
 
   '@emnapi/core@1.10.0':
     dependencies:
@@ -4983,7 +5000,7 @@ snapshots:
       fsevents: 2.3.3
       jiti: 2.6.1
 
-  vitest@2.1.9:
+  vitest@2.1.9(@edge-runtime/vm@5.0.0):
     dependencies:
       '@vitest/expect': 2.1.9
       '@vitest/mocker': 2.1.9(vite@5.4.21)
@@ -5005,6 +5022,8 @@ snapshots:
       vite: 5.4.21
       vite-node: 2.1.9
       why-is-node-running: 2.3.0
+    optionalDependencies:
+      '@edge-runtime/vm': 5.0.0
     transitivePeerDependencies:
       - less
       - lightningcss
@@ -5016,7 +5035,7 @@ snapshots:
       - supports-color
       - terser
 
-  vitest@3.2.4(jiti@2.6.1):
+  vitest@3.2.4(@edge-runtime/vm@5.0.0)(jiti@2.6.1):
     dependencies:
       '@types/chai': 5.2.3
       '@vitest/expect': 3.2.4
@@ -5041,6 +5060,8 @@ snapshots:
       vite: 7.3.2(jiti@2.6.1)
       vite-node: 3.2.4(jiti@2.6.1)
       why-is-node-running: 2.3.0
+    optionalDependencies:
+      '@edge-runtime/vm': 5.0.0
     transitivePeerDependencies:
       - jiti
       - less

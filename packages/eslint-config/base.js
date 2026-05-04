@@ -18,6 +18,6 @@ export default [
   },
   prettier,
   {
-    ignores: ['dist/**', '.next/**', '_generated/**', 'node_modules/**'],
+    ignores: ['dist/**', '.next/**', '**/_generated/**', 'node_modules/**'],
   },
 ];

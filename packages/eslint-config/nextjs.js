@@ -6,14 +6,14 @@ import baseConfig from './base.js';
 
 export default [
   ...baseConfig,
+  react.configs.flat.recommended,
+  reactHooks.configs['recommended-latest'],
   {
-    plugins: { '@next/next': nextPlugin, react, 'react-hooks': reactHooks },
+    plugins: { '@next/next': nextPlugin },
     languageOptions: { globals: { ...globals.browser, ...globals.node } },
     rules: {
       ...nextPlugin.configs.recommended.rules,
       ...nextPlugin.configs['core-web-vitals'].rules,
-      ...react.configs.recommended.rules,
-      ...reactHooks.configs.recommended.rules,
       'react/react-in-jsx-scope': 'off',
     },
     settings: { react: { version: 'detect' } },

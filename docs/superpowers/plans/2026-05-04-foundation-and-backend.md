@@ -365,12 +365,14 @@ export default [
   },
   prettier,
   {
-    ignores: ['dist/**', '.next/**', '_generated/**', 'node_modules/**'],
+    ignores: ['dist/**', '.next/**', '**/_generated/**', 'node_modules/**'],
   },
 ];
 ```
 
 - [ ] **Step 3.3: Write `packages/eslint-config/nextjs.js`**
+
+Uses `react.configs.flat.recommended` and `reactHooks.configs['recommended-latest']` — these are the flat-config-native shapes (the `recommended` legacy entries are eslintrc-shaped and only work via `.rules` spreading).
 
 ```js
 import nextPlugin from '@next/eslint-plugin-next';
@@ -381,14 +383,14 @@ import baseConfig from './base.js';
 
 export default [
   ...baseConfig,
+  react.configs.flat.recommended,
+  reactHooks.configs['recommended-latest'],
   {
-    plugins: { '@next/next': nextPlugin, react, 'react-hooks': reactHooks },
+    plugins: { '@next/next': nextPlugin },
     languageOptions: { globals: { ...globals.browser, ...globals.node } },
     rules: {
       ...nextPlugin.configs.recommended.rules,
       ...nextPlugin.configs['core-web-vitals'].rules,
-      ...react.configs.recommended.rules,
-      ...reactHooks.configs.recommended.rules,
       'react/react-in-jsx-scope': 'off',
     },
     settings: { react: { version: 'detect' } },
@@ -406,12 +408,11 @@ import baseConfig from './base.js';
 
 export default [
   ...baseConfig,
+  react.configs.flat.recommended,
+  reactHooks.configs['recommended-latest'],
   {
-    plugins: { react, 'react-hooks': reactHooks },
     languageOptions: { globals: { ...globals.browser } },
     rules: {
-      ...react.configs.recommended.rules,
-      ...reactHooks.configs.recommended.rules,
       'react/react-in-jsx-scope': 'off',
     },
     settings: { react: { version: 'detect' } },

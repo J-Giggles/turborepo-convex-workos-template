@@ -25,7 +25,9 @@
   "dependencies": {
     "@convex-dev/aggregate": "^0.2.1",
     "@convex-dev/migrations": "^0.3.4",
+    "@convex-dev/r2": "^0.10.1",
     "@convex-dev/rate-limiter": "^0.3.2",
+    "@convex-dev/resend": "^0.2.3",
     "@convex-dev/workos-authkit": "^0.1.5",
     "@workos-inc/node": "^7.23.0",
     "convex": "^1.29.3"

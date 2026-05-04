@@ -12,6 +12,7 @@ import type * as _helpers_auth from "../_helpers/auth.js";
 import type * as aggregates from "../aggregates.js";
 import type * as crons from "../crons.js";
 import type * as http from "../http.js";
+import type * as integrations from "../integrations.js";
 import type * as migrations from "../migrations.js";
 import type * as posts from "../posts.js";
 import type * as rateLimits from "../rateLimits.js";
@@ -30,6 +31,7 @@ declare const fullApi: ApiFromModules<{
   aggregates: typeof aggregates;
   crons: typeof crons;
   http: typeof http;
+  integrations: typeof integrations;
   migrations: typeof migrations;
   posts: typeof posts;
   rateLimits: typeof rateLimits;
@@ -69,4 +71,6 @@ export declare const components: {
   migrations: import("@convex-dev/migrations/_generated/component.js").ComponentApi<"migrations">;
   rateLimiter: import("@convex-dev/rate-limiter/_generated/component.js").ComponentApi<"rateLimiter">;
   postsByOrg: import("@convex-dev/aggregate/_generated/component.js").ComponentApi<"postsByOrg">;
+  r2: import("@convex-dev/r2/_generated/component.js").ComponentApi<"r2">;
+  resend: import("@convex-dev/resend/_generated/component.js").ComponentApi<"resend">;
 };

@@ -11,6 +11,7 @@
 import type * as _helpers_auth from "../_helpers/auth.js";
 import type * as http from "../http.js";
 import type * as posts from "../posts.js";
+import type * as tenant from "../tenant.js";
 import type * as workosSync from "../workosSync.js";
 
 import type {
@@ -23,6 +24,7 @@ declare const fullApi: ApiFromModules<{
   "_helpers/auth": typeof _helpers_auth;
   http: typeof http;
   posts: typeof posts;
+  tenant: typeof tenant;
   workosSync: typeof workosSync;
 }>;
 

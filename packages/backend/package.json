@@ -1,0 +1,37 @@
+{
+  "name": "@repo/backend",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./convex/_generated/api.js",
+  "types": "./convex/_generated/api.d.ts",
+  "exports": {
+    ".": {
+      "types": "./convex/_generated/api.d.ts",
+      "default": "./convex/_generated/api.js"
+    },
+    "./schema": {
+      "types": "./convex/schema.ts",
+      "default": "./convex/schema.ts"
+    }
+  },
+  "scripts": {
+    "dev": "convex dev",
+    "convex:setup": "convex dev --until-success",
+    "lint": "eslint convex",
+    "typecheck": "tsc --noEmit -p convex",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "convex": "^1.29.3",
+    "@convex-dev/workos-authkit": "^0.1.5",
+    "@workos-inc/node": "^7.23.0"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "convex-test": "^0.0.34",
+    "typescript": "^5.9.3",
+    "vitest": "^2.1.5"
+  }
+}

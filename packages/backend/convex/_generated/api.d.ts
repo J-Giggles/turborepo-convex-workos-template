@@ -12,6 +12,7 @@ import type * as _helpers_auth from "../_helpers/auth.js";
 import type * as http from "../http.js";
 import type * as migrations from "../migrations.js";
 import type * as posts from "../posts.js";
+import type * as rateLimits from "../rateLimits.js";
 import type * as tenant from "../tenant.js";
 import type * as workosSync from "../workosSync.js";
 
@@ -26,6 +27,7 @@ declare const fullApi: ApiFromModules<{
   http: typeof http;
   migrations: typeof migrations;
   posts: typeof posts;
+  rateLimits: typeof rateLimits;
   tenant: typeof tenant;
   workosSync: typeof workosSync;
 }>;
@@ -59,4 +61,5 @@ export declare const internal: FilterApi<
 export declare const components: {
   workOSAuthKit: import("@convex-dev/workos-authkit/_generated/component.js").ComponentApi<"workOSAuthKit">;
   migrations: import("@convex-dev/migrations/_generated/component.js").ComponentApi<"migrations">;
+  rateLimiter: import("@convex-dev/rate-limiter/_generated/component.js").ComponentApi<"rateLimiter">;
 };

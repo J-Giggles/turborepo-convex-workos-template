@@ -1,6 +1,7 @@
 import { v } from 'convex/values';
 import { mutation, query } from './_generated/server';
 import { requireOrgMembership } from './_helpers/auth';
+import { rateLimiter } from './rateLimits';
 
 export const listPublishedByOrg = query({
   args: { orgId: v.id('organizations') },
@@ -85,5 +86,23 @@ export const remove = mutation({
     if (!existing) return;
     await requireOrgMembership(ctx, existing.orgId);
     await ctx.db.delete(id);
+  },
+});
+
+export const listPublishedByHost = query({
+  args: { host: v.string() },
+  handler: async (ctx, { host }) => {
+    await rateLimiter.check(ctx, 'publicTenantRead', { key: host, throws: true });
+    const lowercaseHost = host.toLowerCase();
+    const domain = await ctx.db
+      .query('domains')
+      .withIndex('by_host', (q) => q.eq('host', lowercaseHost))
+      .unique();
+    if (!domain || !domain.verified) return [];
+    return await ctx.db
+      .query('posts')
+      .withIndex('by_org_id_and_published', (q) => q.eq('orgId', domain.orgId).eq('published', true))
+      .order('desc')
+      .collect();
   },
 });

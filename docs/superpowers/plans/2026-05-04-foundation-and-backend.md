@@ -333,10 +333,10 @@ git commit -m "feat(typescript-config): add shared tsconfig presets"
     "@next/eslint-plugin-next": "^16.0.7",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.5",
-    "eslint-plugin-react": "^7.40.0",
+    "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-turbo": "^2.7.5",
-    "globals": "^16.7.0",
+    "globals": "^17.0.0",
     "typescript-eslint": "^8.45.0"
   }
 }

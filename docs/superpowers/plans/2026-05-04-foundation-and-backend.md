@@ -702,15 +702,15 @@ export default defineSchema({
     vercelConfigId: v.union(v.string(), v.null()),
   })
     .index('by_host', ['host'])
-    .index('by_org', ['orgId']),
+    .index('by_org_id', ['orgId']),
 
   members: defineTable({
     workosUserId: v.string(),
     orgId: v.id('organizations'),
     role: v.union(v.literal('admin'), v.literal('member')),
   })
-    .index('by_user_org', ['workosUserId', 'orgId'])
-    .index('by_org', ['orgId']),
+    .index('by_workos_user_id_and_org_id', ['workosUserId', 'orgId'])
+    .index('by_org_id', ['orgId']),
 
   users: defineTable({
     workosUserId: v.string(),
@@ -728,8 +728,8 @@ export default defineSchema({
     published: v.boolean(),
     createdAt: v.number(),
   })
-    .index('by_org_published', ['orgId', 'published'])
-    .index('by_org_slug', ['orgId', 'slug']),
+    .index('by_org_id_and_published', ['orgId', 'published'])
+    .index('by_org_id_and_slug', ['orgId', 'slug']),
 });
 ```
 
@@ -967,7 +967,7 @@ export const upsertMembership = internalMutation({
     if (!org) throw new Error(`Org ${args.workosOrgId} not found`);
     const existing = await ctx.db
       .query('members')
-      .withIndex('by_user_org', (q) =>
+      .withIndex('by_workos_user_id_and_org_id', (q) =>
         q.eq('workosUserId', args.workosUserId).eq('orgId', org._id),
       )
       .unique();
@@ -993,7 +993,7 @@ export const deleteMembership = internalMutation({
     if (!org) return;
     const existing = await ctx.db
       .query('members')
-      .withIndex('by_user_org', (q) =>
+      .withIndex('by_workos_user_id_and_org_id', (q) =>
         q.eq('workosUserId', args.workosUserId).eq('orgId', org._id),
       )
       .unique();
@@ -1256,7 +1256,7 @@ export async function requireOrgMembership(
   const identity = await requireUser(ctx);
   const member = await ctx.db
     .query('members')
-    .withIndex('by_user_org', (q) =>
+    .withIndex('by_workos_user_id_and_org_id', (q) =>
       q.eq('workosUserId', identity.subject).eq('orgId', orgId),
     )
     .unique();
@@ -1277,7 +1277,7 @@ export const listPublishedByOrg = query({
   handler: async (ctx, { orgId }) => {
     return await ctx.db
       .query('posts')
-      .withIndex('by_org_published', (q) => q.eq('orgId', orgId).eq('published', true))
+      .withIndex('by_org_id_and_published', (q) => q.eq('orgId', orgId).eq('published', true))
       .order('desc')
       .collect();
   },
@@ -1289,7 +1289,7 @@ export const listAllByOrg = query({
     await requireOrgMembership(ctx, orgId);
     return await ctx.db
       .query('posts')
-      .withIndex('by_org_published', (q) => q.eq('orgId', orgId))
+      .withIndex('by_org_id_and_published', (q) => q.eq('orgId', orgId))
       .order('desc')
       .collect();
   },
@@ -1300,7 +1300,7 @@ export const getPublishedBySlug = query({
   handler: async (ctx, { orgId, slug }) => {
     const post = await ctx.db
       .query('posts')
-      .withIndex('by_org_slug', (q) => q.eq('orgId', orgId).eq('slug', slug))
+      .withIndex('by_org_id_and_slug', (q) => q.eq('orgId', orgId).eq('slug', slug))
       .unique();
     if (!post || !post.published) return null;
     return post;
@@ -1319,7 +1319,7 @@ export const create = mutation({
     const { identity } = await requireOrgMembership(ctx, args.orgId);
     const existing = await ctx.db
       .query('posts')
-      .withIndex('by_org_slug', (q) => q.eq('orgId', args.orgId).eq('slug', args.slug))
+      .withIndex('by_org_id_and_slug', (q) => q.eq('orgId', args.orgId).eq('slug', args.slug))
       .unique();
     if (existing) throw new Error('A post with this slug already exists in this organization');
     return await ctx.db.insert('posts', {
@@ -1648,7 +1648,7 @@ export const listPublishedByHost = query({
     if (!domain || !domain.verified) return [];
     return await ctx.db
       .query('posts')
-      .withIndex('by_org_published', (q) => q.eq('orgId', domain.orgId).eq('published', true))
+      .withIndex('by_org_id_and_published', (q) => q.eq('orgId', domain.orgId).eq('published', true))
       .order('desc')
       .collect();
   },

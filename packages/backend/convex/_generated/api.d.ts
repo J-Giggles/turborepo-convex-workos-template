@@ -9,6 +9,7 @@
  */
 
 import type * as _helpers_auth from "../_helpers/auth.js";
+import type * as aggregates from "../aggregates.js";
 import type * as crons from "../crons.js";
 import type * as http from "../http.js";
 import type * as migrations from "../migrations.js";
@@ -26,6 +27,7 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   "_helpers/auth": typeof _helpers_auth;
+  aggregates: typeof aggregates;
   crons: typeof crons;
   http: typeof http;
   migrations: typeof migrations;
@@ -66,4 +68,5 @@ export declare const components: {
   workOSAuthKit: import("@convex-dev/workos-authkit/_generated/component.js").ComponentApi<"workOSAuthKit">;
   migrations: import("@convex-dev/migrations/_generated/component.js").ComponentApi<"migrations">;
   rateLimiter: import("@convex-dev/rate-limiter/_generated/component.js").ComponentApi<"rateLimiter">;
+  postsByOrg: import("@convex-dev/aggregate/_generated/component.js").ComponentApi<"postsByOrg">;
 };

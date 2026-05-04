@@ -23,6 +23,7 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@convex-dev/aggregate": "^0.2.1",
     "@convex-dev/migrations": "^0.3.4",
     "@convex-dev/rate-limiter": "^0.3.2",
     "@convex-dev/workos-authkit": "^0.1.5",

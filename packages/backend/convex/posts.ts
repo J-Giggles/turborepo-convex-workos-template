@@ -2,6 +2,7 @@ import { v } from 'convex/values';
 import { mutation, query } from './_generated/server';
 import { requireOrgMembership } from './_helpers/auth';
 import { rateLimiter } from './rateLimits';
+import { postsByOrg } from './aggregates';
 
 export const listPublishedByOrg = query({
   args: { orgId: v.id('organizations') },
@@ -53,11 +54,14 @@ export const create = mutation({
       .withIndex('by_org_id_and_slug', (q) => q.eq('orgId', args.orgId).eq('slug', args.slug))
       .unique();
     if (existing) throw new Error('A post with this slug already exists in this organization');
-    return await ctx.db.insert('posts', {
+    const id = await ctx.db.insert('posts', {
       ...args,
       authorWorkosUserId: identity.subject,
       createdAt: Date.now(),
     });
+    const post = await ctx.db.get(id);
+    if (post) await postsByOrg.insert(ctx, post);
+    return id;
   },
 });
 
@@ -85,6 +89,7 @@ export const remove = mutation({
     const existing = await ctx.db.get(id);
     if (!existing) return;
     await requireOrgMembership(ctx, existing.orgId);
+    await postsByOrg.delete(ctx, existing);
     await ctx.db.delete(id);
   },
 });
@@ -104,5 +109,12 @@ export const listPublishedByHost = query({
       .withIndex('by_org_id_and_published', (q) => q.eq('orgId', domain.orgId).eq('published', true))
       .order('desc')
       .collect();
+  },
+});
+
+export const countByOrg = query({
+  args: { orgId: v.id('organizations') },
+  handler: async (ctx, { orgId }) => {
+    return await postsByOrg.count(ctx, { namespace: orgId });
   },
 });

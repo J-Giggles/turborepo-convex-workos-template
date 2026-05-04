@@ -9,10 +9,12 @@
  */
 
 import type * as _helpers_auth from "../_helpers/auth.js";
+import type * as crons from "../crons.js";
 import type * as http from "../http.js";
 import type * as migrations from "../migrations.js";
 import type * as posts from "../posts.js";
 import type * as rateLimits from "../rateLimits.js";
+import type * as scheduledJobs from "../scheduledJobs.js";
 import type * as tenant from "../tenant.js";
 import type * as workosSync from "../workosSync.js";
 
@@ -24,10 +26,12 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   "_helpers/auth": typeof _helpers_auth;
+  crons: typeof crons;
   http: typeof http;
   migrations: typeof migrations;
   posts: typeof posts;
   rateLimits: typeof rateLimits;
+  scheduledJobs: typeof scheduledJobs;
   tenant: typeof tenant;
   workosSync: typeof workosSync;
 }>;

@@ -8,7 +8,9 @@
  * @module
  */
 
+import type * as _helpers_auth from "../_helpers/auth.js";
 import type * as http from "../http.js";
+import type * as posts from "../posts.js";
 import type * as workosSync from "../workosSync.js";
 
 import type {
@@ -18,7 +20,9 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
+  "_helpers/auth": typeof _helpers_auth;
   http: typeof http;
+  posts: typeof posts;
   workosSync: typeof workosSync;
 }>;
 

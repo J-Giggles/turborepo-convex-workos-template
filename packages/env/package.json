@@ -4,12 +4,17 @@
   "private": true,
   "type": "module",
   "exports": {
+    ".": "./src/index.ts",
     "./shared": "./src/serverShared.ts",
-    ".": "./src/index.ts"
+    "./website": "./src/website.ts",
+    "./dashboard": "./src/dashboard.ts",
+    "./tenant": "./src/tenant.ts",
+    "./native": "./src/native.ts"
   },
   "scripts": {
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check": "tsx src/check.ts"
   },
   "dependencies": {
     "@t3-oss/env-core": "^0.11.0",
@@ -18,6 +23,8 @@
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@types/node": "^24.0.0",
+    "tsx": "^4.19.2",
     "typescript": "^5.9.3"
   }
 }

@@ -20,6 +20,10 @@
     "@repo/backend#dev": {
       "cache": false,
       "persistent": true
+    },
+    "check": {
+      "cache": false,
+      "inputs": ["src/check.ts", "src/*.ts", "../../apps/*/.env.local", "../../apps/*/.env"]
     }
   }
 }

@@ -1,0 +1,6 @@
+
+.env.local
+
+# Convex compiles top-level convex/*.ts to .js as build artifacts. Keep TS only.
+# (convex/_generated/**/*.js stays tracked — committed in Task 6.)
+convex/*.js

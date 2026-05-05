@@ -84,7 +84,7 @@ apps/tenant/
 **Files:**
 - Create: `packages/backend/convex/debugUtils.ts`
 
-- [ ] **Step 0.1: Write `packages/backend/convex/debugUtils.ts`**
+- [x] **Step 0.1: Write `packages/backend/convex/debugUtils.ts`**
 
 ```ts
 import { v } from 'convex/values';
@@ -162,7 +162,7 @@ export const _seedTestOrgInternal = internalMutation({
 });
 ```
 
-- [ ] **Step 0.2: Verify codegen + tests still pass**
+- [x] **Step 0.2: Verify codegen + tests still pass**
 
 ```bash
 cd /home/jgigg/code/turborepo-convex-workos-template
@@ -178,7 +178,7 @@ pnpm --filter @repo/backend test
 
 Expected: `Functions ready!`, `debugUtils` appears in the codegen, all 8 existing tests still pass.
 
-- [ ] **Step 0.3: Smoke-run the seed against the dev deployment**
+- [x] **Step 0.3: Smoke-run the seed against the dev deployment** _(deferred — no Convex login in this environment; smoke happens in the plan-3 sibling worktree once both PRs merge)_
 
 ```bash
 cd packages/backend
@@ -187,7 +187,7 @@ npx convex run debugUtils:seedTestOrg '{"slug": "acme", "name": "Acme"}'
 
 Expected: returns a `Id<'organizations'>` (a string starting with the deployment id). If you re-run, it returns the existing orgId — idempotent.
 
-- [ ] **Step 0.4: Commit**
+- [x] **Step 0.4: Commit**
 
 ```bash
 cd /home/jgigg/code/turborepo-convex-workos-template
@@ -209,7 +209,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(backend
 
 Mirrors Plan 2 Task 8 (website) and Plan 3 Task 2 (dashboard) — same shape, port 3002, dependencies on `@repo/backend` for the typed Convex client and `@repo/ui` for design parity. Notably **no** `@repo/auth` dependency — this app is public.
 
-- [ ] **Step 1.1: Write `apps/tenant/package.json`**
+- [x] **Step 1.1: Write `apps/tenant/package.json`** _(deviation: `lint` script is `eslint .` to match Plan 2's Next.js 16 errata fix; not `next lint`)_
 
 ```json
 {
@@ -246,7 +246,7 @@ Mirrors Plan 2 Task 8 (website) and Plan 3 Task 2 (dashboard) — same shape, po
 }
 ```
 
-- [ ] **Step 1.2: Write `apps/tenant/tsconfig.json`**
+- [x] **Step 1.2: Write `apps/tenant/tsconfig.json`**
 
 ```json
 {
@@ -262,7 +262,7 @@ Mirrors Plan 2 Task 8 (website) and Plan 3 Task 2 (dashboard) — same shape, po
 }
 ```
 
-- [ ] **Step 1.3: Write `apps/tenant/next.config.ts`**
+- [x] **Step 1.3: Write `apps/tenant/next.config.ts`** _(deviation: added `cacheComponents: true` — Next.js 16.2 requires this top-level flag for `'use cache'` to work; the bare `experimental.cacheComponents` form is deprecated in 16.2)_
 
 ```ts
 import type { NextConfig } from 'next';
@@ -275,7 +275,7 @@ const config: NextConfig = {
 export default config;
 ```
 
-- [ ] **Step 1.4: Write `apps/tenant/postcss.config.mjs`**
+- [x] **Step 1.4: Write `apps/tenant/postcss.config.mjs`**
 
 ```mjs
 export default {
@@ -285,7 +285,7 @@ export default {
 };
 ```
 
-- [ ] **Step 1.5: Write `apps/tenant/eslint.config.js`**
+- [x] **Step 1.5: Write `apps/tenant/eslint.config.js`**
 
 ```js
 import config from '@repo/eslint-config/nextjs';
@@ -293,7 +293,7 @@ import config from '@repo/eslint-config/nextjs';
 export default config;
 ```
 
-- [ ] **Step 1.6: Write `apps/tenant/next-env.d.ts`**
+- [x] **Step 1.6: Write `apps/tenant/next-env.d.ts`**
 
 ```ts
 /// <reference types="next" />
@@ -303,7 +303,7 @@ export default config;
 // see https://nextjs.org/docs/app/api-reference/config/typescript for more information.
 ```
 
-- [ ] **Step 1.7: Install**
+- [x] **Step 1.7: Install**
 
 ```bash
 pnpm install
@@ -311,7 +311,7 @@ pnpm install
 
 Expected: workspace links resolve, Next.js + Convex pulled.
 
-- [ ] **Step 1.8: Commit**
+- [x] **Step 1.8: Commit**
 
 ```bash
 git add apps/tenant pnpm-lock.yaml
@@ -330,7 +330,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(tenant)
 
 > The existing `tenantServerSchema` makes WorkOS server creds REQUIRED. For Plan 4's pure-public-read scope they're not actually used, but they're declared so the dashboard's Plan 3 sign-in flow can re-authenticate against a tenant subdomain later. If you'd prefer a leaner schema for Plan 4 (drop server creds entirely until they're needed), open a follow-up: this plan keeps the schema as-is for forward compatibility.
 
-- [ ] **Step 2.1: Write `apps/tenant/env.ts`**
+- [x] **Step 2.1: Write `apps/tenant/env.ts`**
 
 ```ts
 import { createTenantEnv } from '@repo/env/tenant';
@@ -338,7 +338,7 @@ import { createTenantEnv } from '@repo/env/tenant';
 export const env = createTenantEnv();
 ```
 
-- [ ] **Step 2.2: Write `apps/tenant/.env.local.example`**
+- [x] **Step 2.2: Write `apps/tenant/.env.local.example`**
 
 ```bash
 # Required by every Next.js app to talk to Convex.
@@ -360,7 +360,7 @@ WORKOS_COOKIE_PASSWORD=00000000000000000000000000000000
 WORKOS_REDIRECT_URI=http://localhost:3002/callback
 ```
 
-- [ ] **Step 2.3: Verify env:check skips when no .env.local exists**
+- [x] **Step 2.3: Verify env:check skips when no .env.local exists**
 
 ```bash
 pnpm env:check
@@ -368,7 +368,7 @@ pnpm env:check
 
 Expected: `· tenant  skip — no file at apps/tenant/.env.local`. (Plus other apps' status from prior plans.)
 
-- [ ] **Step 2.4: Create a working `.env.local` for dev**
+- [x] **Step 2.4: Create a working `.env.local` for dev**
 
 ```bash
 cat > apps/tenant/.env.local <<'EOF'
@@ -383,7 +383,7 @@ WORKOS_REDIRECT_URI=http://localhost:3002/callback
 EOF
 ```
 
-- [ ] **Step 2.5: Verify env:check passes for tenant**
+- [x] **Step 2.5: Verify env:check passes for tenant**
 
 ```bash
 pnpm env:check
@@ -391,7 +391,7 @@ pnpm env:check
 
 Expected: `✓ tenant pass`.
 
-- [ ] **Step 2.6: Commit**
+- [x] **Step 2.6: Commit**
 
 ```bash
 git add apps/tenant/env.ts apps/tenant/.env.local.example
@@ -409,7 +409,7 @@ The single load-bearing function for the whole app. Called by `proxy.ts` and by 
 
 The cache is implemented with Next.js 16's [`'use cache'` directive](https://nextjs.org/docs/app/getting-started/cache-components) (the modern replacement for `unstable_cache`) so we get tag-based invalidation and the right runtime semantics. We tag every entry `tenant:{host}` so domain CRUD in the dashboard can call `updateTag('tenant:{host}')` to invalidate.
 
-- [ ] **Step 3.1: Write `apps/tenant/lib/resolve-tenant.ts`**
+- [x] **Step 3.1: Write `apps/tenant/lib/resolve-tenant.ts`** _(deviation: imports from `next/cache` use the GA names `cacheTag`/`cacheLife`, not the deprecated `unstable_*` aliases. Both work in Next.js 16.2; the un-prefixed names are the documented form. Also added `./_generated/dataModel` to `@repo/backend` package exports so the `Doc<>` type import the plan specifies actually resolves — Plan 3 needs the same.)_
 
 ```ts
 import 'server-only';
@@ -456,7 +456,7 @@ export async function resolveTenant(host: string): Promise<ResolvedTenant> {
 
 > If `unstable_cacheTag` / `unstable_cacheLife` are unavailable in your Next.js 16 build (the API is GA in 16.1+), fall back to `unstable_cache` with `tags` and a `revalidate` option. Adapt and report.
 
-- [ ] **Step 3.2: Typecheck**
+- [x] **Step 3.2: Typecheck**
 
 ```bash
 pnpm --filter tenant typecheck
@@ -464,7 +464,7 @@ pnpm --filter tenant typecheck
 
 Expected: 0-error exit. `'use cache'` requires Next.js 16's Cache Components flag — should already be on by default. If TypeScript complains about `'use cache'`, check that the project's tsconfig extends Plan 1's `nextjs` preset (which has the Next plugin enabled).
 
-- [ ] **Step 3.3: Commit**
+- [x] **Step 3.3: Commit**
 
 ```bash
 git add apps/tenant/lib/resolve-tenant.ts
@@ -480,7 +480,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(tenant)
 
 The host header drives a single internal rewrite. We don't redirect — the URL the browser sees stays whatever it was (e.g. `acme.localhost:3002/welcome`), and Next.js renders `/_tenant/acme/welcome` server-side.
 
-- [ ] **Step 4.1: Write `apps/tenant/proxy.ts`**
+- [x] **Step 4.1: Write `apps/tenant/proxy.ts`**
 
 ```ts
 import { NextResponse, type NextRequest } from 'next/server';
@@ -519,7 +519,7 @@ export default async function proxy(req: NextRequest) {
 
 > The apex redirect target is hardcoded to `http://localhost:3000` for dev. In production you'll want this to read from a NEXT_PUBLIC_MARKETING_URL env var — left as an explicit follow-up at the bottom of this plan.
 
-- [ ] **Step 4.2: Typecheck**
+- [x] **Step 4.2: Typecheck**
 
 ```bash
 pnpm --filter tenant typecheck
@@ -527,7 +527,7 @@ pnpm --filter tenant typecheck
 
 Expected: 0-error exit.
 
-- [ ] **Step 4.3: Commit**
+- [x] **Step 4.3: Commit**
 
 ```bash
 git add apps/tenant/proxy.ts
@@ -548,13 +548,13 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(tenant)
 
 Apex (`/`) is normally never rendered (proxy.ts redirects), but if proxy.ts is ever bypassed (preview deploys, monitoring health checks), having a sensible apex page prevents an empty 404.
 
-- [ ] **Step 5.1: Write `apps/tenant/app/globals.css`**
+- [x] **Step 5.1: Write `apps/tenant/app/globals.css`**
 
 ```css
 @import "@repo/ui/styles/globals.css";
 ```
 
-- [ ] **Step 5.2: Write `apps/tenant/app/layout.tsx`**
+- [x] **Step 5.2: Write `apps/tenant/app/layout.tsx`**
 
 ```tsx
 import type { Metadata } from 'next';
@@ -581,7 +581,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 ```
 
-- [ ] **Step 5.3: Write `apps/tenant/app/page.tsx`**
+- [x] **Step 5.3: Write `apps/tenant/app/page.tsx`**
 
 ```tsx
 // Apex renders only if proxy.ts didn't redirect — health-check / preview-deploy fallback.
@@ -601,7 +601,7 @@ export default function ApexPage() {
 }
 ```
 
-- [ ] **Step 5.4: Write `apps/tenant/app/not-found.tsx`**
+- [x] **Step 5.4: Write `apps/tenant/app/not-found.tsx`** _(deviation: escaped apostrophe as `&apos;` to satisfy `react/no-unescaped-entities`)_
 
 ```tsx
 export default function NotFound() {
@@ -617,7 +617,7 @@ export default function NotFound() {
 }
 ```
 
-- [ ] **Step 5.5: Write `apps/tenant/app/disabled/page.tsx`**
+- [x] **Step 5.5: Write `apps/tenant/app/disabled/page.tsx`**
 
 Reachable when a tenant exists but the domain row is unverified — proxy.ts can rewrite to this in a follow-up if we want to differentiate from "no tenant at all" without leaking org existence to scanners. Plan 4 doesn't wire that yet; the page is here as scaffolding.
 
@@ -634,13 +634,13 @@ export default function DisabledPage() {
 }
 ```
 
-- [ ] **Step 5.6: Empty favicon**
+- [x] **Step 5.6: Empty favicon**
 
 ```bash
 touch apps/tenant/app/favicon.ico
 ```
 
-- [ ] **Step 5.7: Typecheck**
+- [x] **Step 5.7: Typecheck**
 
 ```bash
 pnpm --filter tenant typecheck
@@ -648,7 +648,7 @@ pnpm --filter tenant typecheck
 
 Expected: 0-error exit.
 
-- [ ] **Step 5.8: Commit**
+- [x] **Step 5.8: Commit**
 
 ```bash
 git add apps/tenant/app/layout.tsx apps/tenant/app/globals.css apps/tenant/app/page.tsx apps/tenant/app/not-found.tsx apps/tenant/app/disabled apps/tenant/app/favicon.ico
@@ -666,7 +666,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(tenant)
 
 Two small server components shared between the tenant index and the individual post page. No state, no client JS — kept lean.
 
-- [ ] **Step 6.1: Write `apps/tenant/lib/format.ts`**
+- [x] **Step 6.1: Write `apps/tenant/lib/format.ts`**
 
 ```ts
 const dateFormatter = new Intl.DateTimeFormat('en-US', {
@@ -680,7 +680,7 @@ export function formatPostDate(timestampMs: number): string {
 }
 ```
 
-- [ ] **Step 6.2: Write `apps/tenant/components/tenant-header.tsx`**
+- [x] **Step 6.2: Write `apps/tenant/components/tenant-header.tsx`**
 
 ```tsx
 import Link from 'next/link';
@@ -701,7 +701,7 @@ export function TenantHeader({ orgName, slug }: { orgName: string; slug: string 
 }
 ```
 
-- [ ] **Step 6.3: Write `apps/tenant/components/post-card.tsx`**
+- [x] **Step 6.3: Write `apps/tenant/components/post-card.tsx`**
 
 ```tsx
 import Link from 'next/link';
@@ -737,7 +737,7 @@ export function PostCard({
 }
 ```
 
-- [ ] **Step 6.4: Typecheck + lint**
+- [x] **Step 6.4: Typecheck + lint**
 
 ```bash
 pnpm --filter tenant typecheck && pnpm --filter tenant lint
@@ -745,7 +745,7 @@ pnpm --filter tenant typecheck && pnpm --filter tenant lint
 
 Expected: 0-error exits.
 
-- [ ] **Step 6.5: Commit**
+- [x] **Step 6.5: Commit**
 
 ```bash
 git add apps/tenant/components apps/tenant/lib/format.ts
@@ -763,7 +763,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(tenant)
 
 The `_tenant/[slug]` route group is what `proxy.ts` rewrites to. The `[slug]` param is the resolved org's slug — we re-look-up by slug here (cached) instead of threading the org doc through headers, which keeps the page rendering pure.
 
-- [ ] **Step 7.1: Write `apps/tenant/app/_tenant/[slug]/layout.tsx`**
+- [x] **Step 7.1: Write `apps/tenant/app/_tenant/[slug]/layout.tsx`**
 
 ```tsx
 import { notFound } from 'next/navigation';
@@ -807,7 +807,7 @@ export default async function TenantLayout({
 
 > The `placeholder.invalid` synthetic-host trick relies on `api.tenant.getByHost`'s slug-extraction logic from Plan 1. If you'd rather avoid the contrivance, add a dedicated `api.organizations.getBySlug` query in `packages/backend/convex/organizations.ts` and use it here. Plan 4 keeps the footprint small by reusing the existing query.
 
-- [ ] **Step 7.2: Write `apps/tenant/app/_tenant/[slug]/page.tsx`**
+- [x] **Step 7.2: Write `apps/tenant/app/_tenant/[slug]/page.tsx`**
 
 ```tsx
 import { fetchQuery } from 'convex/nextjs';
@@ -862,7 +862,7 @@ export default async function TenantIndex({
 }
 ```
 
-- [ ] **Step 7.3: Write `apps/tenant/app/_tenant/[slug]/[postSlug]/page.tsx`**
+- [x] **Step 7.3: Write `apps/tenant/app/_tenant/[slug]/[postSlug]/page.tsx`**
 
 ```tsx
 import { notFound } from 'next/navigation';
@@ -931,7 +931,7 @@ export default async function PostPage({
 }
 ```
 
-- [ ] **Step 7.4: Typecheck**
+- [x] **Step 7.4: Typecheck**
 
 ```bash
 pnpm --filter tenant typecheck
@@ -939,7 +939,7 @@ pnpm --filter tenant typecheck
 
 Expected: 0-error exit.
 
-- [ ] **Step 7.5: Commit**
+- [x] **Step 7.5: Commit**
 
 ```bash
 git add apps/tenant/app/_tenant
@@ -949,6 +949,8 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(tenant)
 ---
 
 ## Task 8: Dashboard cache invalidation hooks
+
+> **DEFERRED — applied in a separate follow-up after both Plan 3 and Plan 4 PRs land on `main`.** This task modifies `apps/dashboard/*` files that don't exist on the Plan 4 branch. Will be addressed by a small follow-up PR once both branches merge.
 
 **Files:**
 - Modify: `apps/dashboard/app/(app)/posts/actions.ts`
@@ -1064,7 +1066,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 End-to-end verification — boot the tenant dev server, verify the seeded `acme` org renders correctly via subdomain.
 
-- [ ] **Step 9.1: Confirm seed exists**
+- [x] **Step 9.1: Confirm seed exists** _(skipped — no Convex login in this environment; smoke happens after merge to main)_
 
 ```bash
 cd packages/backend
@@ -1074,7 +1076,7 @@ cd ../..
 
 Expected: returns the orgId (idempotent — fine if it already exists).
 
-- [ ] **Step 9.2: Start tenant dev server**
+- [x] **Step 9.2: Start tenant dev server** _(skipped — depends on seeded Convex data)_
 
 ```bash
 cd /home/jgigg/code/turborepo-convex-workos-template
@@ -1086,7 +1088,7 @@ tail -20 /tmp/tenant-dev.log
 
 Expected: log shows `Ready in <ms>` and `Local: http://localhost:3002`.
 
-- [ ] **Step 9.3: Hit the seeded subdomain**
+- [x] **Step 9.3: Hit the seeded subdomain** _(skipped — depends on seeded Convex data)_
 
 > Chrome and Safari resolve `*.localhost` to `127.0.0.1` automatically. If you're testing in Firefox, add `127.0.0.1 acme.localhost` to `/etc/hosts` first — or use `curl -H "Host: acme.localhost:3002"` as below.
 
@@ -1125,14 +1127,14 @@ Expected:
 
 If any check fails, do NOT commit. Report which one and the snippet of failing output.
 
-- [ ] **Step 9.4: Cleanup**
+- [x] **Step 9.4: Cleanup** _(skipped — no dev server was started)_
 
 ```bash
 kill $TENPID 2>/dev/null || true
 wait $TENPID 2>/dev/null || true
 ```
 
-- [ ] **Step 9.5: Build verification**
+- [x] **Step 9.5: Build verification** _(passed — `pnpm --filter tenant build` emits apex, not-found, disabled as static pages; tenant routes are dynamic via proxy. Cache Components enabled. Replaced the empty `favicon.ico` placeholder with a 1x1 valid ICO since Turbopack 16.2 fails on empty image files.)_
 
 ```bash
 pnpm --filter tenant build
@@ -1148,7 +1150,7 @@ If the build fails on `'use cache'` directive errors, the project may not have C
 
 Final verification gate — same shape as Plan 1 Task 18 + Plan 3 Task 16.
 
-- [ ] **Step 10.1: Run all the green-checks**
+- [x] **Step 10.1: Run all the green-checks** _(deviation: dashboard not on this branch — Plan 3 owns it on a sibling worktree. Verified: env:check (tenant pass), typecheck (6 packages green), lint (6 packages green), tests (8 passing), website + tenant builds green.)_
 
 ```bash
 cd /home/jgigg/code/turborepo-convex-workos-template
@@ -1171,10 +1173,10 @@ Expected:
 
 If any task fails, stop and report which one with full output.
 
-- [ ] **Step 10.2: Tag the milestone**
+- [x] **Step 10.2: Tag the milestone** _(deviation per parent-controller instructions: tag is `tenant-runtime-app-complete` to signal the app shipped without Plan 4 Task 8 dashboard cache hooks; the final `tenant-runtime-complete` tag will be created on `main` once Task 8 lands as a follow-up)_
 
 ```bash
-git tag -a tenant-runtime-complete -m "Plan 4: tenant runtime — host routing + public posts"
+git tag -a tenant-runtime-app-complete -m "Plan 4 (minus Task 8): tenant runtime — host routing + public posts"
 ```
 
 ---

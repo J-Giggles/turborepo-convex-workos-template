@@ -163,7 +163,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(backend
 
 These are the standard shadcn/ui "new-york" variants — hand-written rather than running `shadcn add` because the CLI struggles inside workspace packages (same approach as Plan 2 Task 3). The dashboard needs all five for posts/domains forms.
 
-- [ ] **Step 1.1: Add Radix primitives to `packages/ui/package.json` dependencies**
+- [x] **Step 1.1: Add Radix primitives to `packages/ui/package.json` dependencies**
 
 Add three new entries, keeping existing ones in alphabetic order. The `dependencies` block becomes:
 
@@ -182,7 +182,7 @@ Add three new entries, keeping existing ones in alphabetic order. The `dependenc
 
 > If any version no longer exists on npm, substitute with the nearest current and report.
 
-- [ ] **Step 1.2: Write `packages/ui/src/components/input.tsx`**
+- [x] **Step 1.2: Write `packages/ui/src/components/input.tsx`**
 
 ```tsx
 import * as React from 'react';
@@ -204,7 +204,7 @@ export const Input = React.forwardRef<HTMLInputElement, React.InputHTMLAttribute
 Input.displayName = 'Input';
 ```
 
-- [ ] **Step 1.3: Write `packages/ui/src/components/label.tsx`**
+- [x] **Step 1.3: Write `packages/ui/src/components/label.tsx`**
 
 ```tsx
 'use client';
@@ -227,7 +227,7 @@ export const Label = React.forwardRef<
 Label.displayName = LabelPrimitive.Root.displayName;
 ```
 
-- [ ] **Step 1.4: Write `packages/ui/src/components/textarea.tsx`**
+- [x] **Step 1.4: Write `packages/ui/src/components/textarea.tsx`**
 
 ```tsx
 import * as React from 'react';
@@ -249,7 +249,7 @@ export const Textarea = React.forwardRef<
 Textarea.displayName = 'Textarea';
 ```
 
-- [ ] **Step 1.5: Write `packages/ui/src/components/select.tsx`**
+- [x] **Step 1.5: Write `packages/ui/src/components/select.tsx`**
 
 ```tsx
 'use client';
@@ -328,7 +328,7 @@ export const SelectItem = React.forwardRef<
 SelectItem.displayName = SelectPrimitive.Item.displayName;
 ```
 
-- [ ] **Step 1.6: Write `packages/ui/src/components/dialog.tsx`**
+- [x] **Step 1.6: Write `packages/ui/src/components/dialog.tsx`**
 
 ```tsx
 'use client';
@@ -414,7 +414,7 @@ export const DialogDescription = React.forwardRef<
 DialogDescription.displayName = DialogPrimitive.Description.displayName;
 ```
 
-- [ ] **Step 1.7: Install + typecheck + lint**
+- [x] **Step 1.7: Install + typecheck + lint**
 
 ```bash
 pnpm install
@@ -424,7 +424,7 @@ pnpm --filter @repo/ui lint
 
 Expected: 0-error exit on all three. Resolve any unused-import warnings before commit.
 
-- [ ] **Step 1.8: Commit**
+- [x] **Step 1.8: Commit**
 
 ```bash
 git add packages/ui pnpm-lock.yaml

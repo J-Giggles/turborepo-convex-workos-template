@@ -1064,7 +1064,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 End-to-end verification — boot the tenant dev server, verify the seeded `acme` org renders correctly via subdomain.
 
-- [ ] **Step 9.1: Confirm seed exists**
+- [x] **Step 9.1: Confirm seed exists** _(skipped — no Convex login in this environment; smoke happens after merge to main)_
 
 ```bash
 cd packages/backend
@@ -1074,7 +1074,7 @@ cd ../..
 
 Expected: returns the orgId (idempotent — fine if it already exists).
 
-- [ ] **Step 9.2: Start tenant dev server**
+- [x] **Step 9.2: Start tenant dev server** _(skipped — depends on seeded Convex data)_
 
 ```bash
 cd /home/jgigg/code/turborepo-convex-workos-template
@@ -1086,7 +1086,7 @@ tail -20 /tmp/tenant-dev.log
 
 Expected: log shows `Ready in <ms>` and `Local: http://localhost:3002`.
 
-- [ ] **Step 9.3: Hit the seeded subdomain**
+- [x] **Step 9.3: Hit the seeded subdomain** _(skipped — depends on seeded Convex data)_
 
 > Chrome and Safari resolve `*.localhost` to `127.0.0.1` automatically. If you're testing in Firefox, add `127.0.0.1 acme.localhost` to `/etc/hosts` first — or use `curl -H "Host: acme.localhost:3002"` as below.
 
@@ -1125,14 +1125,14 @@ Expected:
 
 If any check fails, do NOT commit. Report which one and the snippet of failing output.
 
-- [ ] **Step 9.4: Cleanup**
+- [x] **Step 9.4: Cleanup** _(skipped — no dev server was started)_
 
 ```bash
 kill $TENPID 2>/dev/null || true
 wait $TENPID 2>/dev/null || true
 ```
 
-- [ ] **Step 9.5: Build verification**
+- [x] **Step 9.5: Build verification** _(passed — `pnpm --filter tenant build` emits apex, not-found, disabled as static pages; tenant routes are dynamic via proxy. Cache Components enabled. Replaced the empty `favicon.ico` placeholder with a 1x1 valid ICO since Turbopack 16.2 fails on empty image files.)_
 
 ```bash
 pnpm --filter tenant build

@@ -99,7 +99,7 @@ apps/dashboard/
 **Files:**
 - Create: `packages/backend/convex/organizations.ts`
 
-- [ ] **Step 0.1: Write `packages/backend/convex/organizations.ts`**
+- [x] **Step 0.1: Write `packages/backend/convex/organizations.ts`**
 
 ```ts
 import { v } from 'convex/values';
@@ -117,7 +117,7 @@ export const getByWorkosId = query({
 });
 ```
 
-- [ ] **Step 0.2: Verify the function compiles + appears in `_generated/api.d.ts`**
+- [x] **Step 0.2: Verify the function compiles + appears in `_generated/api.d.ts`**
 
 Run convex dev as a background task with timeout, capture log:
 
@@ -134,7 +134,7 @@ grep "organizations" packages/backend/convex/_generated/api.d.ts
 
 Expected: clean `Functions ready!`, `import type * as organizations from "../organizations.js"` and `organizations: typeof organizations` lines appear.
 
-- [ ] **Step 0.3: Run the existing test suite**
+- [x] **Step 0.3: Run the existing test suite**
 
 ```bash
 pnpm --filter @repo/backend test
@@ -142,7 +142,7 @@ pnpm --filter @repo/backend test
 
 Expected: still 8 passing (no test regression — we added a query, not changed schema).
 
-- [ ] **Step 0.4: Commit**
+- [x] **Step 0.4: Commit**
 
 ```bash
 git add packages/backend/convex/organizations.ts packages/backend/convex/_generated

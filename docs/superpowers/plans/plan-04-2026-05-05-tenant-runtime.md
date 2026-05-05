@@ -666,7 +666,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(tenant)
 
 Two small server components shared between the tenant index and the individual post page. No state, no client JS — kept lean.
 
-- [ ] **Step 6.1: Write `apps/tenant/lib/format.ts`**
+- [x] **Step 6.1: Write `apps/tenant/lib/format.ts`**
 
 ```ts
 const dateFormatter = new Intl.DateTimeFormat('en-US', {
@@ -680,7 +680,7 @@ export function formatPostDate(timestampMs: number): string {
 }
 ```
 
-- [ ] **Step 6.2: Write `apps/tenant/components/tenant-header.tsx`**
+- [x] **Step 6.2: Write `apps/tenant/components/tenant-header.tsx`**
 
 ```tsx
 import Link from 'next/link';
@@ -701,7 +701,7 @@ export function TenantHeader({ orgName, slug }: { orgName: string; slug: string 
 }
 ```
 
-- [ ] **Step 6.3: Write `apps/tenant/components/post-card.tsx`**
+- [x] **Step 6.3: Write `apps/tenant/components/post-card.tsx`**
 
 ```tsx
 import Link from 'next/link';
@@ -737,7 +737,7 @@ export function PostCard({
 }
 ```
 
-- [ ] **Step 6.4: Typecheck + lint**
+- [x] **Step 6.4: Typecheck + lint**
 
 ```bash
 pnpm --filter tenant typecheck && pnpm --filter tenant lint
@@ -745,7 +745,7 @@ pnpm --filter tenant typecheck && pnpm --filter tenant lint
 
 Expected: 0-error exits.
 
-- [ ] **Step 6.5: Commit**
+- [x] **Step 6.5: Commit**
 
 ```bash
 git add apps/tenant/components apps/tenant/lib/format.ts

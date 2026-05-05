@@ -763,7 +763,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(tenant)
 
 The `_tenant/[slug]` route group is what `proxy.ts` rewrites to. The `[slug]` param is the resolved org's slug — we re-look-up by slug here (cached) instead of threading the org doc through headers, which keeps the page rendering pure.
 
-- [ ] **Step 7.1: Write `apps/tenant/app/_tenant/[slug]/layout.tsx`**
+- [x] **Step 7.1: Write `apps/tenant/app/_tenant/[slug]/layout.tsx`**
 
 ```tsx
 import { notFound } from 'next/navigation';
@@ -807,7 +807,7 @@ export default async function TenantLayout({
 
 > The `placeholder.invalid` synthetic-host trick relies on `api.tenant.getByHost`'s slug-extraction logic from Plan 1. If you'd rather avoid the contrivance, add a dedicated `api.organizations.getBySlug` query in `packages/backend/convex/organizations.ts` and use it here. Plan 4 keeps the footprint small by reusing the existing query.
 
-- [ ] **Step 7.2: Write `apps/tenant/app/_tenant/[slug]/page.tsx`**
+- [x] **Step 7.2: Write `apps/tenant/app/_tenant/[slug]/page.tsx`**
 
 ```tsx
 import { fetchQuery } from 'convex/nextjs';
@@ -862,7 +862,7 @@ export default async function TenantIndex({
 }
 ```
 
-- [ ] **Step 7.3: Write `apps/tenant/app/_tenant/[slug]/[postSlug]/page.tsx`**
+- [x] **Step 7.3: Write `apps/tenant/app/_tenant/[slug]/[postSlug]/page.tsx`**
 
 ```tsx
 import { notFound } from 'next/navigation';
@@ -931,7 +931,7 @@ export default async function PostPage({
 }
 ```
 
-- [ ] **Step 7.4: Typecheck**
+- [x] **Step 7.4: Typecheck**
 
 ```bash
 pnpm --filter tenant typecheck
@@ -939,7 +939,7 @@ pnpm --filter tenant typecheck
 
 Expected: 0-error exit.
 
-- [ ] **Step 7.5: Commit**
+- [x] **Step 7.5: Commit**
 
 ```bash
 git add apps/tenant/app/_tenant

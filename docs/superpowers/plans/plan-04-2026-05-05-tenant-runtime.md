@@ -480,7 +480,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(tenant)
 
 The host header drives a single internal rewrite. We don't redirect — the URL the browser sees stays whatever it was (e.g. `acme.localhost:3002/welcome`), and Next.js renders `/_tenant/acme/welcome` server-side.
 
-- [ ] **Step 4.1: Write `apps/tenant/proxy.ts`**
+- [x] **Step 4.1: Write `apps/tenant/proxy.ts`**
 
 ```ts
 import { NextResponse, type NextRequest } from 'next/server';
@@ -519,7 +519,7 @@ export default async function proxy(req: NextRequest) {
 
 > The apex redirect target is hardcoded to `http://localhost:3000` for dev. In production you'll want this to read from a NEXT_PUBLIC_MARKETING_URL env var — left as an explicit follow-up at the bottom of this plan.
 
-- [ ] **Step 4.2: Typecheck**
+- [x] **Step 4.2: Typecheck**
 
 ```bash
 pnpm --filter tenant typecheck
@@ -527,7 +527,7 @@ pnpm --filter tenant typecheck
 
 Expected: 0-error exit.
 
-- [ ] **Step 4.3: Commit**
+- [x] **Step 4.3: Commit**
 
 ```bash
 git add apps/tenant/proxy.ts

@@ -209,7 +209,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(backend
 
 Mirrors Plan 2 Task 8 (website) and Plan 3 Task 2 (dashboard) — same shape, port 3002, dependencies on `@repo/backend` for the typed Convex client and `@repo/ui` for design parity. Notably **no** `@repo/auth` dependency — this app is public.
 
-- [ ] **Step 1.1: Write `apps/tenant/package.json`**
+- [x] **Step 1.1: Write `apps/tenant/package.json`** _(deviation: `lint` script is `eslint .` to match Plan 2's Next.js 16 errata fix; not `next lint`)_
 
 ```json
 {
@@ -246,7 +246,7 @@ Mirrors Plan 2 Task 8 (website) and Plan 3 Task 2 (dashboard) — same shape, po
 }
 ```
 
-- [ ] **Step 1.2: Write `apps/tenant/tsconfig.json`**
+- [x] **Step 1.2: Write `apps/tenant/tsconfig.json`**
 
 ```json
 {
@@ -262,7 +262,7 @@ Mirrors Plan 2 Task 8 (website) and Plan 3 Task 2 (dashboard) — same shape, po
 }
 ```
 
-- [ ] **Step 1.3: Write `apps/tenant/next.config.ts`**
+- [x] **Step 1.3: Write `apps/tenant/next.config.ts`** _(deviation: added `cacheComponents: true` — Next.js 16.2 requires this top-level flag for `'use cache'` to work; the bare `experimental.cacheComponents` form is deprecated in 16.2)_
 
 ```ts
 import type { NextConfig } from 'next';
@@ -275,7 +275,7 @@ const config: NextConfig = {
 export default config;
 ```
 
-- [ ] **Step 1.4: Write `apps/tenant/postcss.config.mjs`**
+- [x] **Step 1.4: Write `apps/tenant/postcss.config.mjs`**
 
 ```mjs
 export default {
@@ -285,7 +285,7 @@ export default {
 };
 ```
 
-- [ ] **Step 1.5: Write `apps/tenant/eslint.config.js`**
+- [x] **Step 1.5: Write `apps/tenant/eslint.config.js`**
 
 ```js
 import config from '@repo/eslint-config/nextjs';
@@ -293,7 +293,7 @@ import config from '@repo/eslint-config/nextjs';
 export default config;
 ```
 
-- [ ] **Step 1.6: Write `apps/tenant/next-env.d.ts`**
+- [x] **Step 1.6: Write `apps/tenant/next-env.d.ts`**
 
 ```ts
 /// <reference types="next" />
@@ -303,7 +303,7 @@ export default config;
 // see https://nextjs.org/docs/app/api-reference/config/typescript for more information.
 ```
 
-- [ ] **Step 1.7: Install**
+- [x] **Step 1.7: Install**
 
 ```bash
 pnpm install
@@ -311,7 +311,7 @@ pnpm install
 
 Expected: workspace links resolve, Next.js + Convex pulled.
 
-- [ ] **Step 1.8: Commit**
+- [x] **Step 1.8: Commit**
 
 ```bash
 git add apps/tenant pnpm-lock.yaml

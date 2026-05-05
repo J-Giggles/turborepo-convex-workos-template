@@ -1361,7 +1361,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 One client form component reused by `/posts/new` and `/posts/[id]/edit`. Submit flows through server actions that call `api.posts.create` / `api.posts.update`.
 
-- [ ] **Step 11.1: Write `apps/dashboard/components/post-form.tsx`**
+- [x] **Step 11.1: Write `apps/dashboard/components/post-form.tsx`**
 
 ```tsx
 'use client';
@@ -1472,7 +1472,7 @@ export function PostForm({
 }
 ```
 
-- [ ] **Step 11.2: Write `apps/dashboard/app/(app)/posts/new/page.tsx`**
+- [x] **Step 11.2: Write `apps/dashboard/app/(app)/posts/new/page.tsx`**
 
 ```tsx
 import { fetchMutation } from 'convex/nextjs';
@@ -1501,7 +1501,7 @@ export default async function NewPostPage() {
 }
 ```
 
-- [ ] **Step 11.3: Write `apps/dashboard/app/(app)/posts/[id]/edit/page.tsx`**
+- [x] **Step 11.3: Write `apps/dashboard/app/(app)/posts/[id]/edit/page.tsx`**
 
 ```tsx
 import { notFound } from 'next/navigation';
@@ -1559,7 +1559,7 @@ export default async function EditPostPage({
 >
 > (Append next to the other `posts.ts` exports. Membership check protects against another org's user fetching by id.)
 
-- [ ] **Step 11.4: Add `api.posts.getById`**
+- [x] **Step 11.4: Add `api.posts.getById`**
 
 In `packages/backend/convex/posts.ts`, append (next to the other queries):
 
@@ -1577,7 +1577,7 @@ export const getById = query({
 
 Run convex dev briefly to regenerate `_generated/api.d.ts` (background-task pattern, 25s timeout).
 
-- [ ] **Step 11.5: Typecheck**
+- [x] **Step 11.5: Typecheck**
 
 ```bash
 pnpm --filter dashboard typecheck && pnpm --filter @repo/backend test
@@ -1585,7 +1585,7 @@ pnpm --filter dashboard typecheck && pnpm --filter @repo/backend test
 
 Expected: 0-error typecheck. Tests still 8 passing.
 
-- [ ] **Step 11.6: Commit**
+- [x] **Step 11.6: Commit**
 
 ```bash
 git add packages/backend/convex/posts.ts packages/backend/convex/_generated apps/dashboard/components/post-form.tsx apps/dashboard/app/\(app\)/posts

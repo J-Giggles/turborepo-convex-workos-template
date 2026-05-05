@@ -13,6 +13,7 @@ import type * as aggregates from "../aggregates.js";
 import type * as crons from "../crons.js";
 import type * as http from "../http.js";
 import type * as integrations from "../integrations.js";
+import type * as members from "../members.js";
 import type * as migrations from "../migrations.js";
 import type * as organizations from "../organizations.js";
 import type * as posts from "../posts.js";
@@ -33,6 +34,7 @@ declare const fullApi: ApiFromModules<{
   crons: typeof crons;
   http: typeof http;
   integrations: typeof integrations;
+  members: typeof members;
   migrations: typeof migrations;
   organizations: typeof organizations;
   posts: typeof posts;

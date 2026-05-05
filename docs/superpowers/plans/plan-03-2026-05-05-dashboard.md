@@ -1068,7 +1068,7 @@ The home page reads two counts:
 - Posts in the active org via `api.posts.countByOrg` (uses the `postsByOrg` aggregate from Plan 1 Task 15).
 - Members in the active org — use `ctx.db.query('members').withIndex('by_org_id').collect().length`. There's no dedicated count function yet, so we add a small `members.countByOrg` query as part of this task.
 
-- [ ] **Step 9.1: Add `members.countByOrg` to backend**
+- [x] **Step 9.1: Add `members.countByOrg` to backend**
 
 Create `packages/backend/convex/members.ts`:
 
@@ -1110,7 +1110,7 @@ export const listByOrg = query({
 
 Verify codegen picks it up (background convex dev with timeout — same pattern as Task 0.2).
 
-- [ ] **Step 9.2: Write `apps/dashboard/app/(app)/page.tsx`**
+- [x] **Step 9.2: Write `apps/dashboard/app/(app)/page.tsx`**
 
 ```tsx
 import { fetchQuery } from 'convex/nextjs';
@@ -1154,7 +1154,7 @@ export default async function HomePage() {
 }
 ```
 
-- [ ] **Step 9.3: Typecheck**
+- [x] **Step 9.3: Typecheck**
 
 ```bash
 pnpm --filter dashboard typecheck && pnpm --filter @repo/backend test
@@ -1162,7 +1162,7 @@ pnpm --filter dashboard typecheck && pnpm --filter @repo/backend test
 
 Expected: 0-error typecheck. Tests still 8 passing.
 
-- [ ] **Step 9.4: Commit**
+- [x] **Step 9.4: Commit**
 
 ```bash
 git add packages/backend/convex/members.ts packages/backend/convex/_generated apps/dashboard/app/\(app\)/page.tsx

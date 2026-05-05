@@ -789,13 +789,13 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 The root layout pulls Geist via `next/font` (matching Plan 2's website), loads `@repo/ui/styles/globals.css`, mounts the Convex provider. The `(auth)` route group is unprotected — `proxy.ts`'s matcher excludes `/callback`, and `/sign-in` is the unauth landing.
 
-- [ ] **Step 6.1: Write `apps/dashboard/app/globals.css`**
+- [x] **Step 6.1: Write `apps/dashboard/app/globals.css`**
 
 ```css
 @import "@repo/ui/styles/globals.css";
 ```
 
-- [ ] **Step 6.2: Write `apps/dashboard/app/layout.tsx`**
+- [x] **Step 6.2: Write `apps/dashboard/app/layout.tsx`**
 
 ```tsx
 import type { Metadata } from 'next';
@@ -827,13 +827,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 ```
 
-- [ ] **Step 6.3: Empty favicon**
+- [x] **Step 6.3: Empty favicon**
 
 ```bash
 touch apps/dashboard/app/favicon.ico
 ```
 
-- [ ] **Step 6.4: Write `apps/dashboard/app/(auth)/callback/route.ts`**
+- [x] **Step 6.4: Write `apps/dashboard/app/(auth)/callback/route.ts`**
 
 The AuthKit-supplied handler. After WorkOS redirects back from sign-in, this route exchanges the code for a session and sets the cookie.
 
@@ -845,7 +845,7 @@ export const GET = handleAuth();
 
 > If `handleAuth` lives at a different export path (e.g. `'@workos-inc/authkit-nextjs/dist/handleAuth'`), check the package's README or `dist/index.d.ts` and adapt. The intent is "AuthKit's official callback route handler".
 
-- [ ] **Step 6.5: Write `apps/dashboard/app/(auth)/sign-out/route.ts`**
+- [x] **Step 6.5: Write `apps/dashboard/app/(auth)/sign-out/route.ts`**
 
 ```ts
 import { signOutUrl } from '@repo/auth/server';
@@ -859,7 +859,7 @@ export async function GET() {
 
 > `signOutUrl` from `@repo/auth/server` (Plan 2 Task 7) wraps `@workos-inc/authkit-nextjs`'s sign-out. If its actual signature is different — e.g. it returns a URL string vs. a server action — adjust this route accordingly: in that case, redirect to the returned URL.
 
-- [ ] **Step 6.6: Write `apps/dashboard/app/(auth)/sign-in/page.tsx`**
+- [x] **Step 6.6: Write `apps/dashboard/app/(auth)/sign-in/page.tsx`**
 
 ```tsx
 import { signInUrl } from '@repo/auth/server';
@@ -878,7 +878,7 @@ export default async function SignInPage({
 
 Server-side redirect to the WorkOS-hosted sign-in page — no UI on our side, AuthKit's hosted page handles everything.
 
-- [ ] **Step 6.7: Typecheck**
+- [x] **Step 6.7: Typecheck**
 
 ```bash
 pnpm --filter dashboard typecheck
@@ -886,7 +886,7 @@ pnpm --filter dashboard typecheck
 
 Expected: 0-error exit.
 
-- [ ] **Step 6.8: Commit**
+- [x] **Step 6.8: Commit**
 
 ```bash
 git add apps/dashboard/app

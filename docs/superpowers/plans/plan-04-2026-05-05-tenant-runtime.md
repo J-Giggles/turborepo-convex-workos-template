@@ -84,7 +84,7 @@ apps/tenant/
 **Files:**
 - Create: `packages/backend/convex/debugUtils.ts`
 
-- [ ] **Step 0.1: Write `packages/backend/convex/debugUtils.ts`**
+- [x] **Step 0.1: Write `packages/backend/convex/debugUtils.ts`**
 
 ```ts
 import { v } from 'convex/values';
@@ -162,7 +162,7 @@ export const _seedTestOrgInternal = internalMutation({
 });
 ```
 
-- [ ] **Step 0.2: Verify codegen + tests still pass**
+- [x] **Step 0.2: Verify codegen + tests still pass**
 
 ```bash
 cd /home/jgigg/code/turborepo-convex-workos-template
@@ -178,7 +178,7 @@ pnpm --filter @repo/backend test
 
 Expected: `Functions ready!`, `debugUtils` appears in the codegen, all 8 existing tests still pass.
 
-- [ ] **Step 0.3: Smoke-run the seed against the dev deployment**
+- [x] **Step 0.3: Smoke-run the seed against the dev deployment** _(deferred — no Convex login in this environment; smoke happens in the plan-3 sibling worktree once both PRs merge)_
 
 ```bash
 cd packages/backend
@@ -187,7 +187,7 @@ npx convex run debugUtils:seedTestOrg '{"slug": "acme", "name": "Acme"}'
 
 Expected: returns a `Id<'organizations'>` (a string starting with the deployment id). If you re-run, it returns the existing orgId — idempotent.
 
-- [ ] **Step 0.4: Commit**
+- [x] **Step 0.4: Commit**
 
 ```bash
 cd /home/jgigg/code/turborepo-convex-workos-template

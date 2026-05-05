@@ -11,6 +11,7 @@
 import type * as _helpers_auth from "../_helpers/auth.js";
 import type * as aggregates from "../aggregates.js";
 import type * as crons from "../crons.js";
+import type * as debugUtils from "../debugUtils.js";
 import type * as http from "../http.js";
 import type * as integrations from "../integrations.js";
 import type * as migrations from "../migrations.js";
@@ -30,6 +31,7 @@ declare const fullApi: ApiFromModules<{
   "_helpers/auth": typeof _helpers_auth;
   aggregates: typeof aggregates;
   crons: typeof crons;
+  debugUtils: typeof debugUtils;
   http: typeof http;
   integrations: typeof integrations;
   migrations: typeof migrations;

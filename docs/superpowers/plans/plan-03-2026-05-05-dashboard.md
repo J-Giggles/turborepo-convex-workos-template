@@ -661,7 +661,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 Next.js 16 renamed `middleware.ts` → `proxy.ts`. The `authkitMiddleware()` factory from `@repo/auth/middleware` (Plan 2 Task 6) handles AuthKit cookie session refresh and redirects unauth'd users on protected routes.
 
-- [ ] **Step 4.1: Write `apps/dashboard/proxy.ts`**
+- [x] **Step 4.1: Write `apps/dashboard/proxy.ts`**
 
 ```ts
 import { authkitMiddleware } from '@repo/auth/middleware';
@@ -683,7 +683,7 @@ export const config = {
 };
 ```
 
-- [ ] **Step 4.2: Typecheck**
+- [x] **Step 4.2: Typecheck**
 
 ```bash
 pnpm --filter dashboard typecheck
@@ -693,7 +693,7 @@ Expected: 0-error exit. Some red flags to investigate if this fails:
 - `@repo/auth/middleware` not found → `transpilePackages` in `next.config.ts` includes `@repo/auth`? Yes (Task 2.3).
 - `authkitMiddleware` signature mismatch → check `packages/auth/src/middleware.ts` matches Plan 2's actual implementation.
 
-- [ ] **Step 4.3: Commit**
+- [x] **Step 4.3: Commit**
 
 ```bash
 git add apps/dashboard/proxy.ts

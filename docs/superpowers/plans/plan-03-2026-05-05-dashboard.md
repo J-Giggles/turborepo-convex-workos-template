@@ -567,7 +567,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 `createDashboardEnv()` is already defined in `@repo/env/dashboard` (Plan 1 Task 4). It validates server WorkOS creds + Vercel API + AuthKit client domain — see `packages/env/src/dashboard.ts`.
 
-- [ ] **Step 3.1: Write `apps/dashboard/env.ts`**
+- [x] **Step 3.1: Write `apps/dashboard/env.ts`**
 
 ```ts
 import { createDashboardEnv } from '@repo/env/dashboard';
@@ -575,7 +575,7 @@ import { createDashboardEnv } from '@repo/env/dashboard';
 export const env = createDashboardEnv();
 ```
 
-- [ ] **Step 3.2: Write `apps/dashboard/.env.local.example`**
+- [x] **Step 3.2: Write `apps/dashboard/.env.local.example`**
 
 ```bash
 # Required by every Next.js app to talk to Convex.
@@ -606,7 +606,7 @@ VERCEL_TEAM_ID=
 VERCEL_PROJECT_ID_TENANT=
 ```
 
-- [ ] **Step 3.3: Verify `pnpm env:check` skips when `.env.local` doesn't exist**
+- [x] **Step 3.3: Verify `pnpm env:check` skips when `.env.local` doesn't exist**
 
 ```bash
 pnpm env:check
@@ -614,7 +614,7 @@ pnpm env:check
 
 Expected: `· dashboard  skip — no file at apps/dashboard/.env.local`.
 
-- [ ] **Step 3.4: Create a working `.env.local` for dev (not committed — `.gitignore` covers it)**
+- [x] **Step 3.4: Create a working `.env.local` for dev (not committed — `.gitignore` covers it)**
 
 Replace placeholder values with real ones from your WorkOS dashboard / Convex deployment. Quick template:
 
@@ -637,7 +637,7 @@ EOF
 >
 > **TODO during this plan:** harden `dashboard.ts` schema — relax `vercelApiSchema` from `z.string().min(1)` to `z.string().optional()` so the integration-disabled flow is real. *See Task 11 — Vercel client task — which will land both the schema relaxation and the runtime gate.*
 
-- [ ] **Step 3.5: Verify `pnpm env:check` now passes for dashboard**
+- [x] **Step 3.5: Verify `pnpm env:check` now passes for dashboard**
 
 ```bash
 pnpm env:check
@@ -645,7 +645,7 @@ pnpm env:check
 
 Expected: `✓ dashboard pass`. (After Task 11, the optional VERCEL_* keys can be left blank.)
 
-- [ ] **Step 3.6: Commit**
+- [x] **Step 3.6: Commit**
 
 ```bash
 git add apps/dashboard/env.ts apps/dashboard/.env.local.example

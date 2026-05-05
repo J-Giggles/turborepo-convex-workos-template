@@ -1601,7 +1601,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 Read-only list of org members with their email + role. The `members.listByOrg` query was added in Task 9.
 
-- [ ] **Step 12.1: Write `apps/dashboard/app/(app)/members/page.tsx`**
+- [x] **Step 12.1: Write `apps/dashboard/app/(app)/members/page.tsx`**
 
 ```tsx
 import { fetchQuery } from 'convex/nextjs';
@@ -1655,7 +1655,7 @@ export default async function MembersPage() {
 }
 ```
 
-- [ ] **Step 12.2: Typecheck**
+- [x] **Step 12.2: Typecheck**
 
 ```bash
 pnpm --filter dashboard typecheck
@@ -1663,7 +1663,7 @@ pnpm --filter dashboard typecheck
 
 Expected: 0-error exit.
 
-- [ ] **Step 12.3: Commit**
+- [x] **Step 12.3: Commit**
 
 ```bash
 git add apps/dashboard/app/\(app\)/members

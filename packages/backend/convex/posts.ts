@@ -123,3 +123,13 @@ export const countByOrg = query({
     return await postsByOrg.count(ctx, { namespace: orgId });
   },
 });
+
+export const getById = query({
+  args: { id: v.id('posts') },
+  handler: async (ctx, { id }) => {
+    const post = await ctx.db.get(id);
+    if (!post) return null;
+    await requireOrgMembership(ctx, post.orgId);
+    return post;
+  },
+});

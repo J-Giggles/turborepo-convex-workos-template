@@ -709,7 +709,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 Wraps the dashboard tree in `ConvexProviderWithAuthKit` so client components get reactive Convex queries authenticated by the AuthKit JWT. The provider lives in `app/providers.tsx` and is mounted from the root layout.
 
-- [ ] **Step 5.1: Write `apps/dashboard/app/providers.tsx`**
+- [x] **Step 5.1: Write `apps/dashboard/app/providers.tsx`**
 
 The Convex client lives at module scope (singleton) and `setAuth` is registered once. Convex calls the fetcher every time it needs to refresh the token — no per-render side effects, no re-runs.
 
@@ -741,7 +741,7 @@ export function Providers({ children }: { children: ReactNode }) {
 }
 ```
 
-- [ ] **Step 5.2: Write the token route at `apps/dashboard/app/api/auth/token/route.ts`**
+- [x] **Step 5.2: Write the token route at `apps/dashboard/app/api/auth/token/route.ts`**
 
 A small server endpoint that returns the current AuthKit access token to the Convex client. AuthKit's Next.js SDK stores tokens in a sealed cookie; this route reads them server-side.
 
@@ -760,7 +760,7 @@ export async function GET() {
 
 > **API verification step required.** `withAuth()` in `@repo/auth/server` (Plan 2 Task 7) wraps `@workos-inc/authkit-nextjs`'s `withAuth`. Check `node_modules/@workos-inc/authkit-nextjs/dist/index.d.ts` to confirm the return shape includes `accessToken`. If not, the field may be `sealedSession` or expose tokens via a different helper — adapt and report the deviation. The intent is "return the JWT the Convex client should send".
 
-- [ ] **Step 5.3: Typecheck**
+- [x] **Step 5.3: Typecheck**
 
 ```bash
 pnpm --filter dashboard typecheck
@@ -768,7 +768,7 @@ pnpm --filter dashboard typecheck
 
 Expected: 0-error exit.
 
-- [ ] **Step 5.4: Commit**
+- [x] **Step 5.4: Commit**
 
 ```bash
 git add apps/dashboard/app/providers.tsx apps/dashboard/app/api

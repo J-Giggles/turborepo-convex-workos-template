@@ -2,7 +2,7 @@
 
 Production-leaning starter for **multi-tenant SaaS** on Turborepo + Convex + WorkOS AuthKit. Fork it, replace the demo feature, ship.
 
-> **Status:** Foundation + backend done (`foundation-and-backend-complete` tag). Web/native apps come in Plans 2–4.
+> **Status:** Foundation + backend done (`foundation-and-backend-complete` tag). Web/native apps come in Plans 2–5.
 
 ---
 
@@ -13,9 +13,9 @@ Production-leaning starter for **multi-tenant SaaS** on Turborepo + Convex + Wor
 | Monorepo | Turborepo 2 + pnpm 9 workspaces |
 | Backend | [Convex](https://convex.dev) — schema, real-time queries, HTTP actions, components |
 | Auth | [WorkOS AuthKit](https://workos.com/auth) (web cookie session + native PKCE) |
-| Web | Next.js 16 App Router + React 19 + Tailwind v4 + shadcn/ui *(planned, Plan 2)* |
-| Multi-tenant | `proxy.ts` host routing à la [Vercel Platforms](https://vercel.com/templates/next.js/platforms-starter-kit) *(planned, Plan 3)* |
-| Mobile | **Bare React Native** (no Expo) + NativeWind *(planned, Plan 4)* |
+| Web | Next.js 16 App Router + React 19 + Tailwind v4 + shadcn/ui *(planned, Plans 2 + 3)* |
+| Multi-tenant | `proxy.ts` host routing à la [Vercel Platforms](https://vercel.com/templates/next.js/platforms-starter-kit) *(planned, Plan 4)* |
+| Mobile | **Bare React Native** (no Expo) + NativeWind *(planned, Plan 5)* |
 | Env | `@t3-oss/env-core` per-app schemas + `pnpm env:check` validator that fires on every `pnpm dev` |
 | Lint/format | ESLint 9 flat config + Prettier 3 |
 
@@ -37,7 +37,7 @@ Production-leaning starter for **multi-tenant SaaS** on Turborepo + Convex + Wor
 
 ```
 turborepo-convex-workos-template/
-├── apps/                       # ← Plans 2-4 will scaffold these
+├── apps/                       # ← Plans 2-5 will scaffold these
 │   ├── website/                # marketing — Next.js 16
 │   ├── dashboard/              # admin/control plane — Next.js 16
 │   ├── tenant/                 # multi-tenant runtime — Next.js 16, proxy.ts host routing
@@ -163,10 +163,11 @@ Indexes follow Convex's "include all field names" convention (`by_org_id_and_pub
 
 ## Roadmap
 
-- [x] **Plan 1** — Foundation + Convex backend *(this is what's tagged)*
-- [ ] **Plan 2** — Shared web packages (`@repo/ui`, `@repo/auth`) + `apps/website` + `apps/dashboard`
-- [ ] **Plan 3** — `apps/tenant` (multi-tenant `proxy.ts` runtime)
-- [ ] **Plan 4** — `apps/native` (bare RN + NativeWind + WorkOS PKCE)
+- [x] **Plan 1** — Foundation + Convex backend *(this is what's tagged: `foundation-and-backend-complete`)*
+- [ ] **Plan 2** — Shared web packages (`@repo/ui`, `@repo/auth`) + `apps/website` (marketing) → tags `website-and-shared-complete`
+- [ ] **Plan 3** — `apps/dashboard` (admin/control plane: posts CRUD, members, custom domains) → tags `dashboard-complete`
+- [ ] **Plan 4** — `apps/tenant` (multi-tenant `proxy.ts` runtime) → tags `tenant-runtime-complete`
+- [ ] **Plan 5** — `apps/native` (bare RN + NativeWind + WorkOS PKCE) → tags `native-complete`
 
 Plan documents live under [`docs/superpowers/plans/`](./docs/superpowers/plans/) and the design spec is at [`docs/superpowers/specs/2026-05-04-turborepo-convex-workos-template-design.md`](./docs/superpowers/specs/2026-05-04-turborepo-convex-workos-template-design.md).
 

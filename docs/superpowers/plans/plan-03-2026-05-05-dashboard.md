@@ -9,7 +9,7 @@
 **Tech Stack:** Next.js 16 App Router, React 19, `@repo/ui` (extended with input/label/textarea/select/dialog primitives), `@repo/auth`, `@repo/env/dashboard`, `@repo/backend`, `convex/react` + `convex/nextjs` (server-side fetch), `@workos-inc/authkit-nextjs` (transitively via `@repo/auth`). Existing template stack — pnpm 9, Turborepo 2, ESLint 9 flat config, Prettier 3, Tailwind v4.
 
 **Reference spec:** `docs/superpowers/specs/2026-05-04-turborepo-convex-workos-template-design.md` (especially §6 auth flow and §10 Convex components — `aggregate` is the load-bearing piece for the home page).
-**Builds on:** Plan 2 (`docs/superpowers/plans/2026-05-05-web-shared-and-website.md`), tagged `website-and-shared-complete` on `main`.
+**Builds on:** Plan 2 (`docs/superpowers/plans/plan-02-2026-05-05-web-shared-and-website.md`), tagged `website-and-shared-complete` on `main`.
 
 ---
 
@@ -2311,4 +2311,4 @@ When this plan completes, the repo has:
 
 ## What's next
 
-**Plan 4** (`docs/superpowers/plans/2026-05-XX-tenant-runtime.md`) builds `apps/tenant`: the multi-tenant Next.js 16 app at port 3002 that resolves `{slug}.localhost:3002` and `app.acmecorp.com`-style custom domains via `proxy.ts` host routing, then renders public posts via `api.posts.listPublishedByHost` (with the rate-limiter caveat already documented in Plan 1).
+**Plan 4** (`docs/superpowers/plans/plan-04-2026-05-05-tenant-runtime.md`) builds `apps/tenant`: the multi-tenant Next.js 16 app at port 3002 that resolves `{slug}.localhost:3002` and `app.acmecorp.com`-style custom domains via `proxy.ts` host routing, then renders public posts via `api.posts.listPublishedByHost` (with the rate-limiter caveat already documented in Plan 1).

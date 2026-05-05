@@ -9,7 +9,7 @@
 **Tech Stack:** Next.js 16 App Router, React 19, Tailwind CSS v4, shadcn/ui (latest CLI, registry: `@shadcn-ui/registry`), `@workos-inc/authkit-nextjs`, `next/font` (Geist), `next/image`. Existing template stack — pnpm 9, Turborepo 2, ESLint 9 flat config, Prettier 3.
 
 **Reference spec:** `docs/superpowers/specs/2026-05-04-turborepo-convex-workos-template-design.md`
-**Builds on:** Plan 1 (`docs/superpowers/plans/2026-05-04-foundation-and-backend.md`), tagged `foundation-and-backend-complete` on `main`.
+**Builds on:** Plan 1 (`docs/superpowers/plans/plan-01-2026-05-04-foundation-and-backend.md`), tagged `foundation-and-backend-complete` on `main`.
 
 ---
 
@@ -1228,4 +1228,4 @@ When this plan completes, the repo has:
 - `apps/website` — public Next.js 16 marketing site at `localhost:3000` with hero/features/footer
 - Tag `website-and-shared-complete` on the merge commit
 
-Plan 3 (`docs/superpowers/plans/2026-05-XX-dashboard.md`) builds on this by adding `apps/dashboard` consuming all three packages: AuthKit-gated CRUD UI for posts, members list, custom-domain provisioning via the Vercel Domains REST API.
+Plan 3 (`docs/superpowers/plans/plan-03-2026-05-05-dashboard.md`) builds on this by adding `apps/dashboard` consuming all three packages: AuthKit-gated CRUD UI for posts, members list, custom-domain provisioning via the Vercel Domains REST API.

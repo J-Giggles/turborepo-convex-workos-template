@@ -1680,7 +1680,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 The Vercel client wraps three endpoints: `add domain to project`, `verify domain`, `remove domain`. When `VERCEL_API_TOKEN` is unset, every method returns `{ disabled: true }` — the UI surfaces a banner instead of breaking. This makes `VERCEL_*` keys truly optional in dev.
 
-- [ ] **Step 13.1: Relax `vercelApiSchema` in `packages/env/src/dashboard.ts`**
+- [x] **Step 13.1: Relax `vercelApiSchema` in `packages/env/src/dashboard.ts`**
 
 Find the import + spread:
 
@@ -1720,7 +1720,7 @@ export const vercelApiSchema = {
 } as const;
 ```
 
-- [ ] **Step 13.2: Write `apps/dashboard/lib/vercel.ts`**
+- [x] **Step 13.2: Write `apps/dashboard/lib/vercel.ts`**
 
 ```ts
 import 'server-only';
@@ -1796,7 +1796,7 @@ export const vercelEnabled = isEnabled;
 
 > Vercel REST API URL versions (`/v9`, `/v10`) come from current Vercel docs. If the response shape differs in 2026 (the API has been stable since 2023), surface the deviation but keep the function signatures.
 
-- [ ] **Step 13.3: Typecheck both packages**
+- [x] **Step 13.3: Typecheck both packages**
 
 ```bash
 pnpm --filter @repo/env typecheck && pnpm --filter dashboard typecheck
@@ -1804,7 +1804,7 @@ pnpm --filter @repo/env typecheck && pnpm --filter dashboard typecheck
 
 Expected: 0-error exit on both.
 
-- [ ] **Step 13.4: Verify env:check still passes for dashboard with empty VERCEL_***
+- [x] **Step 13.4: Verify env:check still passes for dashboard with empty VERCEL_***
 
 Edit `apps/dashboard/.env.local` to leave `VERCEL_*` blank, then:
 
@@ -1814,7 +1814,7 @@ pnpm env:check
 
 Expected: `✓ dashboard pass`. (Previously failed because `.min(1)` rejected blank values.)
 
-- [ ] **Step 13.5: Commit**
+- [x] **Step 13.5: Commit**
 
 ```bash
 git add packages/env/src/serverShared.ts apps/dashboard/lib/vercel.ts

@@ -548,13 +548,13 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(tenant)
 
 Apex (`/`) is normally never rendered (proxy.ts redirects), but if proxy.ts is ever bypassed (preview deploys, monitoring health checks), having a sensible apex page prevents an empty 404.
 
-- [ ] **Step 5.1: Write `apps/tenant/app/globals.css`**
+- [x] **Step 5.1: Write `apps/tenant/app/globals.css`**
 
 ```css
 @import "@repo/ui/styles/globals.css";
 ```
 
-- [ ] **Step 5.2: Write `apps/tenant/app/layout.tsx`**
+- [x] **Step 5.2: Write `apps/tenant/app/layout.tsx`**
 
 ```tsx
 import type { Metadata } from 'next';
@@ -581,7 +581,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 ```
 
-- [ ] **Step 5.3: Write `apps/tenant/app/page.tsx`**
+- [x] **Step 5.3: Write `apps/tenant/app/page.tsx`**
 
 ```tsx
 // Apex renders only if proxy.ts didn't redirect — health-check / preview-deploy fallback.
@@ -601,7 +601,7 @@ export default function ApexPage() {
 }
 ```
 
-- [ ] **Step 5.4: Write `apps/tenant/app/not-found.tsx`**
+- [x] **Step 5.4: Write `apps/tenant/app/not-found.tsx`** _(deviation: escaped apostrophe as `&apos;` to satisfy `react/no-unescaped-entities`)_
 
 ```tsx
 export default function NotFound() {
@@ -617,7 +617,7 @@ export default function NotFound() {
 }
 ```
 
-- [ ] **Step 5.5: Write `apps/tenant/app/disabled/page.tsx`**
+- [x] **Step 5.5: Write `apps/tenant/app/disabled/page.tsx`**
 
 Reachable when a tenant exists but the domain row is unverified — proxy.ts can rewrite to this in a follow-up if we want to differentiate from "no tenant at all" without leaking org existence to scanners. Plan 4 doesn't wire that yet; the page is here as scaffolding.
 
@@ -634,13 +634,13 @@ export default function DisabledPage() {
 }
 ```
 
-- [ ] **Step 5.6: Empty favicon**
+- [x] **Step 5.6: Empty favicon**
 
 ```bash
 touch apps/tenant/app/favicon.ico
 ```
 
-- [ ] **Step 5.7: Typecheck**
+- [x] **Step 5.7: Typecheck**
 
 ```bash
 pnpm --filter tenant typecheck
@@ -648,7 +648,7 @@ pnpm --filter tenant typecheck
 
 Expected: 0-error exit.
 
-- [ ] **Step 5.8: Commit**
+- [x] **Step 5.8: Commit**
 
 ```bash
 git add apps/tenant/app/layout.tsx apps/tenant/app/globals.css apps/tenant/app/page.tsx apps/tenant/app/not-found.tsx apps/tenant/app/disabled apps/tenant/app/favicon.ico

@@ -18,6 +18,64 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
 
+  apps/dashboard:
+    dependencies:
+      '@repo/auth':
+        specifier: workspace:*
+        version: link:../../packages/auth
+      '@repo/backend':
+        specifier: workspace:*
+        version: link:../../packages/backend
+      '@repo/env':
+        specifier: workspace:*
+        version: link:../../packages/env
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      '@workos-inc/authkit-nextjs':
+        specifier: ^2.13.0
+        version: 2.17.0(next@16.2.4(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+      convex:
+        specifier: ^1.29.3
+        version: 1.37.0(react@19.2.5)
+      lucide-react:
+        specifier: ^0.469.0
+        version: 0.469.0(react@19.2.5)
+      next:
+        specifier: ^16.1.4
+        version: 16.2.4(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+      react:
+        specifier: ^19.2.3
+        version: 19.2.5
+      react-dom:
+        specifier: ^19.2.3
+        version: 19.2.5(react@19.2.5)
+    devDependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
+      '@tailwindcss/postcss':
+        specifier: ^4.0.0
+        version: 4.2.4
+      '@types/node':
+        specifier: ^24.0.0
+        version: 24.12.2
+      '@types/react':
+        specifier: ^19.0.0
+        version: 19.2.14
+      '@types/react-dom':
+        specifier: ^19.0.0
+        version: 19.2.3(@types/react@19.2.14)
+      tailwindcss:
+        specifier: ^4.0.0
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
   apps/website:
     dependencies:
       '@repo/env':

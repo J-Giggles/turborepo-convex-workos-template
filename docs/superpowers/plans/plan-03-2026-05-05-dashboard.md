@@ -445,7 +445,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(ui): ad
 
 Mirrors Plan 2 Task 8 (website scaffold) but with port 3001 and dependencies on `@repo/auth`, `@repo/backend`, plus `convex` for the React provider.
 
-- [ ] **Step 2.1: Write `apps/dashboard/package.json`**
+- [x] **Step 2.1: Write `apps/dashboard/package.json`**
 
 ```json
 {
@@ -485,7 +485,7 @@ Mirrors Plan 2 Task 8 (website scaffold) but with port 3001 and dependencies on 
 }
 ```
 
-- [ ] **Step 2.2: Write `apps/dashboard/tsconfig.json`**
+- [x] **Step 2.2: Write `apps/dashboard/tsconfig.json`**
 
 ```json
 {
@@ -501,7 +501,7 @@ Mirrors Plan 2 Task 8 (website scaffold) but with port 3001 and dependencies on 
 }
 ```
 
-- [ ] **Step 2.3: Write `apps/dashboard/next.config.ts`**
+- [x] **Step 2.3: Write `apps/dashboard/next.config.ts`**
 
 ```ts
 import type { NextConfig } from 'next';
@@ -514,7 +514,7 @@ const config: NextConfig = {
 export default config;
 ```
 
-- [ ] **Step 2.4: Write `apps/dashboard/postcss.config.mjs`**
+- [x] **Step 2.4: Write `apps/dashboard/postcss.config.mjs`**
 
 ```mjs
 export default {
@@ -524,7 +524,7 @@ export default {
 };
 ```
 
-- [ ] **Step 2.5: Write `apps/dashboard/eslint.config.js`**
+- [x] **Step 2.5: Write `apps/dashboard/eslint.config.js`**
 
 ```js
 import config from '@repo/eslint-config/nextjs';
@@ -532,7 +532,7 @@ import config from '@repo/eslint-config/nextjs';
 export default config;
 ```
 
-- [ ] **Step 2.6: Write `apps/dashboard/next-env.d.ts`**
+- [x] **Step 2.6: Write `apps/dashboard/next-env.d.ts`**
 
 ```ts
 /// <reference types="next" />
@@ -542,7 +542,7 @@ export default config;
 // see https://nextjs.org/docs/app/api-reference/config/typescript for more information.
 ```
 
-- [ ] **Step 2.7: Install**
+- [x] **Step 2.7: Install**
 
 ```bash
 pnpm install
@@ -550,7 +550,7 @@ pnpm install
 
 Expected: workspace links resolve, `convex` and `@workos-inc/authkit-nextjs` pulled.
 
-- [ ] **Step 2.8: Commit**
+- [x] **Step 2.8: Commit**
 
 ```bash
 git add apps/dashboard pnpm-lock.yaml

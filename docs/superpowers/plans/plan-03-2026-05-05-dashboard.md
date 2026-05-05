@@ -986,7 +986,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 The `(app)` route group is everything that requires auth. Its layout reads the active org once and passes the org name to the nav. Nav has two links (Posts, Members, Domains) and a sign-out button.
 
-- [ ] **Step 8.1: Write `apps/dashboard/components/nav.tsx`**
+- [x] **Step 8.1: Write `apps/dashboard/components/nav.tsx`**
 
 ```tsx
 import Link from 'next/link';
@@ -1024,7 +1024,7 @@ export function Nav({ orgName, userEmail }: { orgName: string; userEmail: string
 }
 ```
 
-- [ ] **Step 8.2: Write `apps/dashboard/app/(app)/layout.tsx`**
+- [x] **Step 8.2: Write `apps/dashboard/app/(app)/layout.tsx`**
 
 ```tsx
 import { readActiveOrg } from '../../lib/active-org';
@@ -1041,7 +1041,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
 }
 ```
 
-- [ ] **Step 8.3: Typecheck + lint**
+- [x] **Step 8.3: Typecheck + lint**
 
 ```bash
 pnpm --filter dashboard typecheck && pnpm --filter dashboard lint
@@ -1049,7 +1049,7 @@ pnpm --filter dashboard typecheck && pnpm --filter dashboard lint
 
 Expected: 0-error exit on both.
 
-- [ ] **Step 8.4: Commit**
+- [x] **Step 8.4: Commit**
 
 ```bash
 git add apps/dashboard/components/nav.tsx apps/dashboard/app/\(app\)/layout.tsx

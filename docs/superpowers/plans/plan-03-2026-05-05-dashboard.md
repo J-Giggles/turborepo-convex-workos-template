@@ -2253,7 +2253,7 @@ If the build fails on `withAuth` / `useAuth` API mismatches: that means Plan 2's
 
 Final verification gate. Same shape as Plan 1 Task 18.
 
-- [ ] **Step 16.1: Run all the green-checks**
+- [x] **Step 16.1: Run all the green-checks**
 
 ```bash
 cd /home/jgigg/code/turborepo-convex-workos-template
@@ -2275,7 +2275,7 @@ Expected:
 
 If any task fails, stop and report which one with full output.
 
-- [ ] **Step 16.2: Tag the milestone**
+- [x] **Step 16.2: Tag the milestone**
 
 ```bash
 git tag -a dashboard-complete -m "Plan 3: dashboard with posts/members/domains UI"

@@ -902,7 +902,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 Every authenticated request needs to resolve "which org am I acting on?". The AuthKit JWT carries the active `organizationId` claim (set when the user picks an org during AuthKit sign-in). We map it to the Convex `organizations` row via the new `organizations.getByWorkosId` query (Task 0).
 
-- [ ] **Step 7.1: Write `apps/dashboard/lib/active-org.ts`**
+- [x] **Step 7.1: Write `apps/dashboard/lib/active-org.ts`**
 
 ```ts
 import 'server-only';
@@ -961,7 +961,7 @@ export async function readActiveOrg(): Promise<ActiveOrg> {
 
 > **API verification:** `session.organizationId`, `session.user.id/email/firstName/lastName` — names depend on AuthKit's session shape. Check `node_modules/@workos-inc/authkit-nextjs/dist/index.d.ts` and adapt. Same caveat as Task 5/6: deviations are likely; report any.
 
-- [ ] **Step 7.2: Typecheck**
+- [x] **Step 7.2: Typecheck**
 
 ```bash
 pnpm --filter dashboard typecheck
@@ -969,7 +969,7 @@ pnpm --filter dashboard typecheck
 
 Expected: 0-error exit. If `@repo/backend/_generated/dataModel` import path is wrong, check `packages/backend/package.json` exports — Plan 1 ships only `.` and `./schema` — the dataModel import may need `import type { Doc } from '@repo/backend';` if `Doc` is re-exported from `_generated/api`. Adapt and report.
 
-- [ ] **Step 7.3: Commit**
+- [x] **Step 7.3: Commit**
 
 ```bash
 git add apps/dashboard/lib/active-org.ts

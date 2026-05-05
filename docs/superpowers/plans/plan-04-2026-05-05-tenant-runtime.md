@@ -950,6 +950,8 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(tenant)
 
 ## Task 8: Dashboard cache invalidation hooks
 
+> **DEFERRED — applied in a separate follow-up after both Plan 3 and Plan 4 PRs land on `main`.** This task modifies `apps/dashboard/*` files that don't exist on the Plan 4 branch. Will be addressed by a small follow-up PR once both branches merge.
+
 **Files:**
 - Modify: `apps/dashboard/app/(app)/posts/actions.ts`
 - Modify: `apps/dashboard/app/(app)/domains/actions.ts`
@@ -1148,7 +1150,7 @@ If the build fails on `'use cache'` directive errors, the project may not have C
 
 Final verification gate — same shape as Plan 1 Task 18 + Plan 3 Task 16.
 
-- [ ] **Step 10.1: Run all the green-checks**
+- [x] **Step 10.1: Run all the green-checks** _(deviation: dashboard not on this branch — Plan 3 owns it on a sibling worktree. Verified: env:check (tenant pass), typecheck (6 packages green), lint (6 packages green), tests (8 passing), website + tenant builds green.)_
 
 ```bash
 cd /home/jgigg/code/turborepo-convex-workos-template
@@ -1171,10 +1173,10 @@ Expected:
 
 If any task fails, stop and report which one with full output.
 
-- [ ] **Step 10.2: Tag the milestone**
+- [x] **Step 10.2: Tag the milestone** _(deviation per parent-controller instructions: tag is `tenant-runtime-app-complete` to signal the app shipped without Plan 4 Task 8 dashboard cache hooks; the final `tenant-runtime-complete` tag will be created on `main` once Task 8 lands as a follow-up)_
 
 ```bash
-git tag -a tenant-runtime-complete -m "Plan 4: tenant runtime — host routing + public posts"
+git tag -a tenant-runtime-app-complete -m "Plan 4 (minus Task 8): tenant runtime — host routing + public posts"
 ```
 
 ---

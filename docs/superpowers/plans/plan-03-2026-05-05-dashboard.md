@@ -1179,7 +1179,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 Posts list reads `api.posts.listAllByOrg` (auth-gated query; the AuthKit JWT in the Convex client identifies the user, and `requireOrgMembership` validates membership server-side). Delete uses a server action wrapper around `api.posts.remove`.
 
-- [ ] **Step 10.1: Write `apps/dashboard/components/delete-button.tsx`**
+- [x] **Step 10.1: Write `apps/dashboard/components/delete-button.tsx`**
 
 ```tsx
 'use client';
@@ -1241,7 +1241,7 @@ export function DeleteButton({
 }
 ```
 
-- [ ] **Step 10.2: Write `apps/dashboard/app/(app)/posts/page.tsx`**
+- [x] **Step 10.2: Write `apps/dashboard/app/(app)/posts/page.tsx`**
 
 ```tsx
 import Link from 'next/link';
@@ -1317,7 +1317,7 @@ export default async function PostsPage() {
 }
 ```
 
-- [ ] **Step 10.3: Write `apps/dashboard/app/(app)/posts/actions.ts`**
+- [x] **Step 10.3: Write `apps/dashboard/app/(app)/posts/actions.ts`**
 
 ```ts
 'use server';
@@ -1335,7 +1335,7 @@ export async function deletePost(id: Id<'posts'>): Promise<void> {
 
 > `fetchMutation` from `convex/nextjs` propagates the AuthKit JWT to Convex automatically when the request flows through the Convex provider's auth setter (Task 5). For server-action paths Convex passes the cookie session directly to the deployment via `Convex-Auth` header. If you see "Not authenticated" errors, confirm `fetchMutation` is being called inside an authenticated request lifecycle.
 
-- [ ] **Step 10.4: Typecheck**
+- [x] **Step 10.4: Typecheck**
 
 ```bash
 pnpm --filter dashboard typecheck
@@ -1343,7 +1343,7 @@ pnpm --filter dashboard typecheck
 
 Expected: 0-error exit.
 
-- [ ] **Step 10.5: Commit**
+- [x] **Step 10.5: Commit**
 
 ```bash
 git add apps/dashboard/app/\(app\)/posts apps/dashboard/components/delete-button.tsx

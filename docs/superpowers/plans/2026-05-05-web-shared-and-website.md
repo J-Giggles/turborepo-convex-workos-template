@@ -85,7 +85,7 @@ apps/website/
 - Create: `packages/ui/postcss.config.mjs`
 - Create: `packages/ui/src/lib/utils.ts`
 
-- [ ] **Step 1.1: Write `packages/ui/package.json`**
+- [x] **Step 1.1: Write `packages/ui/package.json`**
 
 ```json
 {
@@ -133,7 +133,7 @@ apps/website/
 
 > If any version listed above no longer exists on npm, substitute the nearest current version and report the substitution. Specifically: `lucide-react` and `shadcn` ship frequently; check `npm view <pkg> version` if install fails.
 
-- [ ] **Step 1.2: Write `packages/ui/tsconfig.json`**
+- [x] **Step 1.2: Write `packages/ui/tsconfig.json`**
 
 ```json
 {
@@ -146,7 +146,7 @@ apps/website/
 }
 ```
 
-- [ ] **Step 1.3: Write `packages/ui/eslint.config.js`**
+- [x] **Step 1.3: Write `packages/ui/eslint.config.js`**
 
 ```js
 import config from '@repo/eslint-config/react-internal';
@@ -154,7 +154,7 @@ import config from '@repo/eslint-config/react-internal';
 export default config;
 ```
 
-- [ ] **Step 1.4: Write `packages/ui/postcss.config.mjs`**
+- [x] **Step 1.4: Write `packages/ui/postcss.config.mjs`**
 
 ```mjs
 export default {
@@ -164,7 +164,7 @@ export default {
 };
 ```
 
-- [ ] **Step 1.5: Write `packages/ui/src/lib/utils.ts`**
+- [x] **Step 1.5: Write `packages/ui/src/lib/utils.ts`**
 
 ```ts
 import { clsx, type ClassValue } from 'clsx';
@@ -175,7 +175,7 @@ export function cn(...inputs: ClassValue[]): string {
 }
 ```
 
-- [ ] **Step 1.6: Install + typecheck**
+- [x] **Step 1.6: Install + typecheck**
 
 Run from repo root:
 ```bash
@@ -184,7 +184,7 @@ pnpm --filter @repo/ui typecheck
 ```
 Expected: pnpm resolves new deps, typecheck exits 0.
 
-- [ ] **Step 1.7: Commit**
+- [x] **Step 1.7: Commit**
 
 ```bash
 git add packages/ui pnpm-lock.yaml
@@ -201,7 +201,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(ui): sc
 
 shadcn's CLI normally writes `components.json` itself, but inside a workspace package we hand-write it (the CLI's interactive prompts don't always recognize monorepo paths).
 
-- [ ] **Step 2.1: Write `packages/ui/components.json`**
+- [x] **Step 2.1: Write `packages/ui/components.json`**
 
 ```json
 {
@@ -229,7 +229,7 @@ shadcn's CLI normally writes `components.json` itself, but inside a workspace pa
 
 > shadcn config schema URL is `https://ui.shadcn.com/schema.json`; confirm it still loads. If the schema has moved, the value is informational — keep the JSON shape per the working version.
 
-- [ ] **Step 2.2: Write `packages/ui/src/styles/globals.css`**
+- [x] **Step 2.2: Write `packages/ui/src/styles/globals.css`**
 
 This is the Tailwind v4 entry point + theme tokens. Tailwind v4 uses `@theme` (CSS-native) instead of `tailwind.config.js`.
 
@@ -270,14 +270,14 @@ This is the Tailwind v4 entry point + theme tokens. Tailwind v4 uses `@theme` (C
 }
 ```
 
-- [ ] **Step 2.3: Verify typecheck still passes**
+- [x] **Step 2.3: Verify typecheck still passes**
 
 ```bash
 pnpm --filter @repo/ui typecheck
 ```
 Expected: exit 0.
 
-- [ ] **Step 2.4: Commit**
+- [x] **Step 2.4: Commit**
 
 ```bash
 git add packages/ui/components.json packages/ui/src/styles
@@ -295,7 +295,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(ui): ad
 
 These are the standard shadcn/ui "new-york" variants. Hand-writing rather than running `shadcn add` because the CLI struggles with workspace packages — the source-of-truth content is below.
 
-- [ ] **Step 3.1: Write `packages/ui/src/components/button.tsx`**
+- [x] **Step 3.1: Write `packages/ui/src/components/button.tsx`**
 
 ```tsx
 import * as React from 'react';
@@ -343,7 +343,7 @@ Button.displayName = 'Button';
 export { buttonVariants };
 ```
 
-- [ ] **Step 3.2: Write `packages/ui/src/components/card.tsx`**
+- [x] **Step 3.2: Write `packages/ui/src/components/card.tsx`**
 
 ```tsx
 import * as React from 'react';
@@ -396,7 +396,7 @@ export const CardFooter = React.forwardRef<HTMLDivElement, React.HTMLAttributes<
 CardFooter.displayName = 'CardFooter';
 ```
 
-- [ ] **Step 3.3: Write `packages/ui/src/components/badge.tsx`**
+- [x] **Step 3.3: Write `packages/ui/src/components/badge.tsx`**
 
 ```tsx
 import * as React from 'react';
@@ -429,14 +429,14 @@ export function Badge({ className, variant, ...props }: BadgeProps) {
 export { badgeVariants };
 ```
 
-- [ ] **Step 3.4: Typecheck + lint**
+- [x] **Step 3.4: Typecheck + lint**
 
 ```bash
 pnpm --filter @repo/ui typecheck && pnpm --filter @repo/ui lint
 ```
 Expected: both exit 0.
 
-- [ ] **Step 3.5: Commit**
+- [x] **Step 3.5: Commit**
 
 ```bash
 git add packages/ui/src/components
@@ -452,7 +452,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(ui): ad
 
 A small TS mirror of the Tailwind theme that the React Native app (Plan 5) consumes — colors as hex (RN can't read OKLCH yet), spacing as numbers, typography sizes.
 
-- [ ] **Step 4.1: Write `packages/ui/src/tokens.ts`**
+- [x] **Step 4.1: Write `packages/ui/src/tokens.ts`**
 
 ```ts
 /**
@@ -523,14 +523,14 @@ export type ColorToken = keyof typeof colors;
 export type SpacingToken = keyof typeof spacing;
 ```
 
-- [ ] **Step 4.2: Typecheck**
+- [x] **Step 4.2: Typecheck**
 
 ```bash
 pnpm --filter @repo/ui typecheck
 ```
 Expected: exit 0.
 
-- [ ] **Step 4.3: Commit**
+- [x] **Step 4.3: Commit**
 
 ```bash
 git add packages/ui/src/tokens.ts
@@ -549,7 +549,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(ui): ad
 
 `@repo/auth` is consumed by Next.js apps only — it depends on `@workos-inc/authkit-nextjs` and re-exports a small surface so consumers don't need to know the underlying SDK shape. The Next.js peer-dep version split (Tasks 9 + Plan 1's pnpm warning) is finally resolved by pinning here.
 
-- [ ] **Step 5.1: Write `packages/auth/package.json`**
+- [x] **Step 5.1: Write `packages/auth/package.json`**
 
 ```json
 {
@@ -582,7 +582,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(ui): ad
 }
 ```
 
-- [ ] **Step 5.2: Write `packages/auth/tsconfig.json`**
+- [x] **Step 5.2: Write `packages/auth/tsconfig.json`**
 
 ```json
 {
@@ -598,7 +598,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(ui): ad
 }
 ```
 
-- [ ] **Step 5.3: Write `packages/auth/eslint.config.js`**
+- [x] **Step 5.3: Write `packages/auth/eslint.config.js`**
 
 ```js
 import config from '@repo/eslint-config/base';
@@ -606,21 +606,21 @@ import config from '@repo/eslint-config/base';
 export default config;
 ```
 
-- [ ] **Step 5.4: Write `packages/auth/src/index.ts`**
+- [x] **Step 5.4: Write `packages/auth/src/index.ts`**
 
 ```ts
 export { authkitMiddleware } from './middleware';
 export { withAuth, signInUrl, signOutUrl } from './server';
 ```
 
-- [ ] **Step 5.5: Install**
+- [x] **Step 5.5: Install**
 
 ```bash
 pnpm install
 ```
 Expected: workspace links resolved, `@workos-inc/authkit-nextjs` pulled.
 
-- [ ] **Step 5.6: Commit**
+- [x] **Step 5.6: Commit**
 
 ```bash
 git add packages/auth pnpm-lock.yaml
@@ -636,7 +636,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(auth): 
 
 In Next.js 16 the file is named `proxy.ts` (was `middleware.ts` pre-16). `@workos-inc/authkit-nextjs` exports `authkitMiddleware` — we re-export it with our own typed wrapper so consumers get a single-import experience and easy override of the default config.
 
-- [ ] **Step 6.1: Write `packages/auth/src/middleware.ts`**
+- [x] **Step 6.1: Write `packages/auth/src/middleware.ts`**
 
 ```ts
 import { authkitMiddleware as workosAuthkitMiddleware } from '@workos-inc/authkit-nextjs';
@@ -676,14 +676,14 @@ export function authkitMiddleware(config: AuthkitMiddlewareConfig = {}) {
 
 > Verify the `@workos-inc/authkit-nextjs` API surface matches — read `node_modules/@workos-inc/authkit-nextjs/dist/index.d.ts` if any TypeScript error appears. The package's API is generally stable but option names may differ.
 
-- [ ] **Step 6.2: Typecheck**
+- [x] **Step 6.2: Typecheck**
 
 ```bash
 pnpm --filter @repo/auth typecheck
 ```
 Expected: exit 0.
 
-- [ ] **Step 6.3: Commit**
+- [x] **Step 6.3: Commit**
 
 ```bash
 git add packages/auth/src/middleware.ts
@@ -699,7 +699,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(auth): 
 
 Server-side helpers used in Server Components, Route Handlers, and Server Actions. Re-exports `withAuth` from the AuthKit SDK + adds two URL builders.
 
-- [ ] **Step 7.1: Write `packages/auth/src/server.ts`**
+- [x] **Step 7.1: Write `packages/auth/src/server.ts`**
 
 ```ts
 import {
@@ -726,14 +726,14 @@ export const signOutUrl = workosSignOut;
 
 > If `@workos-inc/authkit-nextjs` exports differ (e.g. `getSignInUrl` named differently), inspect `node_modules/@workos-inc/authkit-nextjs/dist/index.d.ts` and adapt — the names above match v2.13. Report any deviation.
 
-- [ ] **Step 7.2: Typecheck**
+- [x] **Step 7.2: Typecheck**
 
 ```bash
 pnpm --filter @repo/auth typecheck
 ```
 Expected: exit 0.
 
-- [ ] **Step 7.3: Commit**
+- [x] **Step 7.3: Commit**
 
 ```bash
 git add packages/auth/src/server.ts
@@ -754,7 +754,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(auth): 
 
 Standard Next.js 16 App Router setup. We deliberately do NOT use `create-next-app` because it generates files we don't want (default README, default ESLint config, etc.) — hand-writing keeps control.
 
-- [ ] **Step 8.1: Write `apps/website/package.json`**
+- [x] **Step 8.1: Write `apps/website/package.json`**
 
 ```json
 {
@@ -789,7 +789,7 @@ Standard Next.js 16 App Router setup. We deliberately do NOT use `create-next-ap
 }
 ```
 
-- [ ] **Step 8.2: Write `apps/website/tsconfig.json`**
+- [x] **Step 8.2: Write `apps/website/tsconfig.json`**
 
 ```json
 {
@@ -805,7 +805,7 @@ Standard Next.js 16 App Router setup. We deliberately do NOT use `create-next-ap
 }
 ```
 
-- [ ] **Step 8.3: Write `apps/website/next.config.ts`**
+- [x] **Step 8.3: Write `apps/website/next.config.ts`**
 
 ```ts
 import type { NextConfig } from 'next';
@@ -818,7 +818,7 @@ const config: NextConfig = {
 export default config;
 ```
 
-- [ ] **Step 8.4: Write `apps/website/postcss.config.mjs`**
+- [x] **Step 8.4: Write `apps/website/postcss.config.mjs`**
 
 ```mjs
 export default {
@@ -828,7 +828,7 @@ export default {
 };
 ```
 
-- [ ] **Step 8.5: Write `apps/website/eslint.config.js`**
+- [x] **Step 8.5: Write `apps/website/eslint.config.js`**
 
 ```js
 import config from '@repo/eslint-config/nextjs';
@@ -836,7 +836,7 @@ import config from '@repo/eslint-config/nextjs';
 export default config;
 ```
 
-- [ ] **Step 8.6: Write `apps/website/next-env.d.ts`**
+- [x] **Step 8.6: Write `apps/website/next-env.d.ts`**
 
 ```ts
 /// <reference types="next" />
@@ -846,14 +846,14 @@ export default config;
 // see https://nextjs.org/docs/app/api-reference/config/typescript for more information.
 ```
 
-- [ ] **Step 8.7: Install**
+- [x] **Step 8.7: Install**
 
 ```bash
 pnpm install
 ```
 Expected: Next.js, React 19, Tailwind v4 pulled. Workspace links to `@repo/ui` and `@repo/env` resolve.
 
-- [ ] **Step 8.8: Commit**
+- [x] **Step 8.8: Commit**
 
 ```bash
 git add apps/website pnpm-lock.yaml
@@ -870,7 +870,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(website
 
 The website's env module calls `createWebsiteEnv()` from `@repo/env/website`, which throws at module-load on missing/invalid env. The dev server fails fast.
 
-- [ ] **Step 9.1: Write `apps/website/env.ts`**
+- [x] **Step 9.1: Write `apps/website/env.ts`**
 
 ```ts
 import { createWebsiteEnv } from '@repo/env/website';
@@ -878,7 +878,7 @@ import { createWebsiteEnv } from '@repo/env/website';
 export const env = createWebsiteEnv();
 ```
 
-- [ ] **Step 9.2: Write `apps/website/.env.local.example`**
+- [x] **Step 9.2: Write `apps/website/.env.local.example`**
 
 ```bash
 # Required by every Next.js app to talk to Convex.
@@ -889,7 +889,7 @@ NEXT_PUBLIC_CONVEX_URL=
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
-- [ ] **Step 9.3: Verify env:check skips when no .env.local exists**
+- [x] **Step 9.3: Verify env:check skips when no .env.local exists**
 
 From repo root:
 ```bash
@@ -897,7 +897,7 @@ pnpm env:check
 ```
 Expected: `· website  skip — no file at apps/website/.env.local`. Other apps still skip.
 
-- [ ] **Step 9.4: Create a working .env.local for dev (not committed — covered by .gitignore)**
+- [x] **Step 9.4: Create a working .env.local for dev (not committed — covered by .gitignore)**
 
 ```bash
 cat > apps/website/.env.local <<'EOF'
@@ -908,14 +908,14 @@ EOF
 
 (Substitute the real `NEXT_PUBLIC_CONVEX_URL` from `packages/backend/.env.local` if you want the website to actually talk to Convex; for marketing pages it's not used, just present.)
 
-- [ ] **Step 9.5: Verify env:check now passes for website**
+- [x] **Step 9.5: Verify env:check now passes for website**
 
 ```bash
 pnpm env:check
 ```
 Expected: `✓ website  pass`.
 
-- [ ] **Step 9.6: Commit**
+- [x] **Step 9.6: Commit**
 
 ```bash
 git add apps/website/env.ts apps/website/.env.local.example
@@ -933,13 +933,13 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(website
 
 The root layout pulls in Geist via `next/font` (Vercel's default sans-serif), loads `@repo/ui/styles/globals.css` for theme tokens, sets sensible metadata defaults.
 
-- [ ] **Step 10.1: Write `apps/website/app/globals.css`**
+- [x] **Step 10.1: Write `apps/website/app/globals.css`**
 
 ```css
 @import "@repo/ui/styles/globals.css";
 ```
 
-- [ ] **Step 10.2: Write `apps/website/app/layout.tsx`**
+- [x] **Step 10.2: Write `apps/website/app/layout.tsx`**
 
 ```tsx
 import type { Metadata } from 'next';
@@ -968,20 +968,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 ```
 
-- [ ] **Step 10.3: Create empty favicon placeholder**
+- [x] **Step 10.3: Create empty favicon placeholder**
 
 ```bash
 touch apps/website/app/favicon.ico
 ```
 
-- [ ] **Step 10.4: Typecheck**
+- [x] **Step 10.4: Typecheck**
 
 ```bash
 pnpm --filter website typecheck
 ```
 Expected: exit 0.
 
-- [ ] **Step 10.5: Commit**
+- [x] **Step 10.5: Commit**
 
 ```bash
 git add apps/website/app
@@ -999,7 +999,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(website
 
 Three small server components. No interactivity needed for a marketing page — keeps client JS to zero.
 
-- [ ] **Step 11.1: Write `apps/website/components/landing/hero.tsx`**
+- [x] **Step 11.1: Write `apps/website/components/landing/hero.tsx`**
 
 ```tsx
 import { Button } from '@repo/ui/components/button';
@@ -1027,7 +1027,7 @@ export function Hero() {
 }
 ```
 
-- [ ] **Step 11.2: Write `apps/website/components/landing/features.tsx`**
+- [x] **Step 11.2: Write `apps/website/components/landing/features.tsx`**
 
 ```tsx
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@repo/ui/components/card';
@@ -1079,7 +1079,7 @@ export function Features() {
 }
 ```
 
-- [ ] **Step 11.3: Write `apps/website/components/landing/footer.tsx`**
+- [x] **Step 11.3: Write `apps/website/components/landing/footer.tsx`**
 
 ```tsx
 export function Footer() {
@@ -1108,14 +1108,14 @@ export function Footer() {
 }
 ```
 
-- [ ] **Step 11.4: Typecheck + lint**
+- [x] **Step 11.4: Typecheck + lint**
 
 ```bash
 pnpm --filter website typecheck && pnpm --filter website lint
 ```
 Expected: exit 0 for both.
 
-- [ ] **Step 11.5: Commit**
+- [x] **Step 11.5: Commit**
 
 ```bash
 git add apps/website/components
@@ -1129,7 +1129,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(website
 **Files:**
 - Create: `apps/website/app/page.tsx`
 
-- [ ] **Step 12.1: Write `apps/website/app/page.tsx`**
+- [x] **Step 12.1: Write `apps/website/app/page.tsx`**
 
 ```tsx
 import { Hero } from '../components/landing/hero';
@@ -1147,7 +1147,7 @@ export default function Page() {
 }
 ```
 
-- [ ] **Step 12.2: Smoke-test dev server**
+- [x] **Step 12.2: Smoke-test dev server**
 
 Run as a background task with timeout:
 
@@ -1172,14 +1172,14 @@ Expected:
 
 If the smoke check fails (HTTP non-200, missing hero), do NOT commit. Report which check failed.
 
-- [ ] **Step 12.3: Build verification**
+- [x] **Step 12.3: Build verification**
 
 ```bash
 pnpm --filter website build
 ```
 Expected: build completes, no type or lint errors. `apps/website/.next/` is created.
 
-- [ ] **Step 12.4: Commit**
+- [x] **Step 12.4: Commit**
 
 ```bash
 git add apps/website/app/page.tsx
@@ -1192,7 +1192,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(website
 
 After all per-package work, verify the whole monorepo still builds and lints cleanly. This is the "did anything break elsewhere?" gate.
 
-- [ ] **Step 13.1: Run all the green-checks**
+- [x] **Step 13.1: Run all the green-checks**
 
 From repo root:
 ```bash
@@ -1211,7 +1211,7 @@ Expected:
 
 If any task fails, stop and report which one with full output.
 
-- [ ] **Step 13.2: Tag the milestone**
+- [x] **Step 13.2: Tag the milestone**
 
 ```bash
 git tag -a website-and-shared-complete -m "Plan 2: shared packages + marketing site"

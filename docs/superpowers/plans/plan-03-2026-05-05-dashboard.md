@@ -99,7 +99,7 @@ apps/dashboard/
 **Files:**
 - Create: `packages/backend/convex/organizations.ts`
 
-- [ ] **Step 0.1: Write `packages/backend/convex/organizations.ts`**
+- [x] **Step 0.1: Write `packages/backend/convex/organizations.ts`**
 
 ```ts
 import { v } from 'convex/values';
@@ -117,7 +117,7 @@ export const getByWorkosId = query({
 });
 ```
 
-- [ ] **Step 0.2: Verify the function compiles + appears in `_generated/api.d.ts`**
+- [x] **Step 0.2: Verify the function compiles + appears in `_generated/api.d.ts`**
 
 Run convex dev as a background task with timeout, capture log:
 
@@ -134,7 +134,7 @@ grep "organizations" packages/backend/convex/_generated/api.d.ts
 
 Expected: clean `Functions ready!`, `import type * as organizations from "../organizations.js"` and `organizations: typeof organizations` lines appear.
 
-- [ ] **Step 0.3: Run the existing test suite**
+- [x] **Step 0.3: Run the existing test suite**
 
 ```bash
 pnpm --filter @repo/backend test
@@ -142,7 +142,7 @@ pnpm --filter @repo/backend test
 
 Expected: still 8 passing (no test regression — we added a query, not changed schema).
 
-- [ ] **Step 0.4: Commit**
+- [x] **Step 0.4: Commit**
 
 ```bash
 git add packages/backend/convex/organizations.ts packages/backend/convex/_generated
@@ -163,7 +163,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(backend
 
 These are the standard shadcn/ui "new-york" variants — hand-written rather than running `shadcn add` because the CLI struggles inside workspace packages (same approach as Plan 2 Task 3). The dashboard needs all five for posts/domains forms.
 
-- [ ] **Step 1.1: Add Radix primitives to `packages/ui/package.json` dependencies**
+- [x] **Step 1.1: Add Radix primitives to `packages/ui/package.json` dependencies**
 
 Add three new entries, keeping existing ones in alphabetic order. The `dependencies` block becomes:
 
@@ -182,7 +182,7 @@ Add three new entries, keeping existing ones in alphabetic order. The `dependenc
 
 > If any version no longer exists on npm, substitute with the nearest current and report.
 
-- [ ] **Step 1.2: Write `packages/ui/src/components/input.tsx`**
+- [x] **Step 1.2: Write `packages/ui/src/components/input.tsx`**
 
 ```tsx
 import * as React from 'react';
@@ -204,7 +204,7 @@ export const Input = React.forwardRef<HTMLInputElement, React.InputHTMLAttribute
 Input.displayName = 'Input';
 ```
 
-- [ ] **Step 1.3: Write `packages/ui/src/components/label.tsx`**
+- [x] **Step 1.3: Write `packages/ui/src/components/label.tsx`**
 
 ```tsx
 'use client';
@@ -227,7 +227,7 @@ export const Label = React.forwardRef<
 Label.displayName = LabelPrimitive.Root.displayName;
 ```
 
-- [ ] **Step 1.4: Write `packages/ui/src/components/textarea.tsx`**
+- [x] **Step 1.4: Write `packages/ui/src/components/textarea.tsx`**
 
 ```tsx
 import * as React from 'react';
@@ -249,7 +249,7 @@ export const Textarea = React.forwardRef<
 Textarea.displayName = 'Textarea';
 ```
 
-- [ ] **Step 1.5: Write `packages/ui/src/components/select.tsx`**
+- [x] **Step 1.5: Write `packages/ui/src/components/select.tsx`**
 
 ```tsx
 'use client';
@@ -328,7 +328,7 @@ export const SelectItem = React.forwardRef<
 SelectItem.displayName = SelectPrimitive.Item.displayName;
 ```
 
-- [ ] **Step 1.6: Write `packages/ui/src/components/dialog.tsx`**
+- [x] **Step 1.6: Write `packages/ui/src/components/dialog.tsx`**
 
 ```tsx
 'use client';
@@ -414,7 +414,7 @@ export const DialogDescription = React.forwardRef<
 DialogDescription.displayName = DialogPrimitive.Description.displayName;
 ```
 
-- [ ] **Step 1.7: Install + typecheck + lint**
+- [x] **Step 1.7: Install + typecheck + lint**
 
 ```bash
 pnpm install
@@ -424,7 +424,7 @@ pnpm --filter @repo/ui lint
 
 Expected: 0-error exit on all three. Resolve any unused-import warnings before commit.
 
-- [ ] **Step 1.8: Commit**
+- [x] **Step 1.8: Commit**
 
 ```bash
 git add packages/ui pnpm-lock.yaml
@@ -445,7 +445,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(ui): ad
 
 Mirrors Plan 2 Task 8 (website scaffold) but with port 3001 and dependencies on `@repo/auth`, `@repo/backend`, plus `convex` for the React provider.
 
-- [ ] **Step 2.1: Write `apps/dashboard/package.json`**
+- [x] **Step 2.1: Write `apps/dashboard/package.json`**
 
 ```json
 {
@@ -485,7 +485,7 @@ Mirrors Plan 2 Task 8 (website scaffold) but with port 3001 and dependencies on 
 }
 ```
 
-- [ ] **Step 2.2: Write `apps/dashboard/tsconfig.json`**
+- [x] **Step 2.2: Write `apps/dashboard/tsconfig.json`**
 
 ```json
 {
@@ -501,7 +501,7 @@ Mirrors Plan 2 Task 8 (website scaffold) but with port 3001 and dependencies on 
 }
 ```
 
-- [ ] **Step 2.3: Write `apps/dashboard/next.config.ts`**
+- [x] **Step 2.3: Write `apps/dashboard/next.config.ts`**
 
 ```ts
 import type { NextConfig } from 'next';
@@ -514,7 +514,7 @@ const config: NextConfig = {
 export default config;
 ```
 
-- [ ] **Step 2.4: Write `apps/dashboard/postcss.config.mjs`**
+- [x] **Step 2.4: Write `apps/dashboard/postcss.config.mjs`**
 
 ```mjs
 export default {
@@ -524,7 +524,7 @@ export default {
 };
 ```
 
-- [ ] **Step 2.5: Write `apps/dashboard/eslint.config.js`**
+- [x] **Step 2.5: Write `apps/dashboard/eslint.config.js`**
 
 ```js
 import config from '@repo/eslint-config/nextjs';
@@ -532,7 +532,7 @@ import config from '@repo/eslint-config/nextjs';
 export default config;
 ```
 
-- [ ] **Step 2.6: Write `apps/dashboard/next-env.d.ts`**
+- [x] **Step 2.6: Write `apps/dashboard/next-env.d.ts`**
 
 ```ts
 /// <reference types="next" />
@@ -542,7 +542,7 @@ export default config;
 // see https://nextjs.org/docs/app/api-reference/config/typescript for more information.
 ```
 
-- [ ] **Step 2.7: Install**
+- [x] **Step 2.7: Install**
 
 ```bash
 pnpm install
@@ -550,7 +550,7 @@ pnpm install
 
 Expected: workspace links resolve, `convex` and `@workos-inc/authkit-nextjs` pulled.
 
-- [ ] **Step 2.8: Commit**
+- [x] **Step 2.8: Commit**
 
 ```bash
 git add apps/dashboard pnpm-lock.yaml
@@ -567,7 +567,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 `createDashboardEnv()` is already defined in `@repo/env/dashboard` (Plan 1 Task 4). It validates server WorkOS creds + Vercel API + AuthKit client domain — see `packages/env/src/dashboard.ts`.
 
-- [ ] **Step 3.1: Write `apps/dashboard/env.ts`**
+- [x] **Step 3.1: Write `apps/dashboard/env.ts`**
 
 ```ts
 import { createDashboardEnv } from '@repo/env/dashboard';
@@ -575,7 +575,7 @@ import { createDashboardEnv } from '@repo/env/dashboard';
 export const env = createDashboardEnv();
 ```
 
-- [ ] **Step 3.2: Write `apps/dashboard/.env.local.example`**
+- [x] **Step 3.2: Write `apps/dashboard/.env.local.example`**
 
 ```bash
 # Required by every Next.js app to talk to Convex.
@@ -606,7 +606,7 @@ VERCEL_TEAM_ID=
 VERCEL_PROJECT_ID_TENANT=
 ```
 
-- [ ] **Step 3.3: Verify `pnpm env:check` skips when `.env.local` doesn't exist**
+- [x] **Step 3.3: Verify `pnpm env:check` skips when `.env.local` doesn't exist**
 
 ```bash
 pnpm env:check
@@ -614,7 +614,7 @@ pnpm env:check
 
 Expected: `· dashboard  skip — no file at apps/dashboard/.env.local`.
 
-- [ ] **Step 3.4: Create a working `.env.local` for dev (not committed — `.gitignore` covers it)**
+- [x] **Step 3.4: Create a working `.env.local` for dev (not committed — `.gitignore` covers it)**
 
 Replace placeholder values with real ones from your WorkOS dashboard / Convex deployment. Quick template:
 
@@ -637,7 +637,7 @@ EOF
 >
 > **TODO during this plan:** harden `dashboard.ts` schema — relax `vercelApiSchema` from `z.string().min(1)` to `z.string().optional()` so the integration-disabled flow is real. *See Task 11 — Vercel client task — which will land both the schema relaxation and the runtime gate.*
 
-- [ ] **Step 3.5: Verify `pnpm env:check` now passes for dashboard**
+- [x] **Step 3.5: Verify `pnpm env:check` now passes for dashboard**
 
 ```bash
 pnpm env:check
@@ -645,7 +645,7 @@ pnpm env:check
 
 Expected: `✓ dashboard pass`. (After Task 11, the optional VERCEL_* keys can be left blank.)
 
-- [ ] **Step 3.6: Commit**
+- [x] **Step 3.6: Commit**
 
 ```bash
 git add apps/dashboard/env.ts apps/dashboard/.env.local.example
@@ -661,7 +661,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 Next.js 16 renamed `middleware.ts` → `proxy.ts`. The `authkitMiddleware()` factory from `@repo/auth/middleware` (Plan 2 Task 6) handles AuthKit cookie session refresh and redirects unauth'd users on protected routes.
 
-- [ ] **Step 4.1: Write `apps/dashboard/proxy.ts`**
+- [x] **Step 4.1: Write `apps/dashboard/proxy.ts`**
 
 ```ts
 import { authkitMiddleware } from '@repo/auth/middleware';
@@ -683,7 +683,7 @@ export const config = {
 };
 ```
 
-- [ ] **Step 4.2: Typecheck**
+- [x] **Step 4.2: Typecheck**
 
 ```bash
 pnpm --filter dashboard typecheck
@@ -693,7 +693,7 @@ Expected: 0-error exit. Some red flags to investigate if this fails:
 - `@repo/auth/middleware` not found → `transpilePackages` in `next.config.ts` includes `@repo/auth`? Yes (Task 2.3).
 - `authkitMiddleware` signature mismatch → check `packages/auth/src/middleware.ts` matches Plan 2's actual implementation.
 
-- [ ] **Step 4.3: Commit**
+- [x] **Step 4.3: Commit**
 
 ```bash
 git add apps/dashboard/proxy.ts
@@ -709,7 +709,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 Wraps the dashboard tree in `ConvexProviderWithAuthKit` so client components get reactive Convex queries authenticated by the AuthKit JWT. The provider lives in `app/providers.tsx` and is mounted from the root layout.
 
-- [ ] **Step 5.1: Write `apps/dashboard/app/providers.tsx`**
+- [x] **Step 5.1: Write `apps/dashboard/app/providers.tsx`**
 
 The Convex client lives at module scope (singleton) and `setAuth` is registered once. Convex calls the fetcher every time it needs to refresh the token — no per-render side effects, no re-runs.
 
@@ -741,7 +741,7 @@ export function Providers({ children }: { children: ReactNode }) {
 }
 ```
 
-- [ ] **Step 5.2: Write the token route at `apps/dashboard/app/api/auth/token/route.ts`**
+- [x] **Step 5.2: Write the token route at `apps/dashboard/app/api/auth/token/route.ts`**
 
 A small server endpoint that returns the current AuthKit access token to the Convex client. AuthKit's Next.js SDK stores tokens in a sealed cookie; this route reads them server-side.
 
@@ -760,7 +760,7 @@ export async function GET() {
 
 > **API verification step required.** `withAuth()` in `@repo/auth/server` (Plan 2 Task 7) wraps `@workos-inc/authkit-nextjs`'s `withAuth`. Check `node_modules/@workos-inc/authkit-nextjs/dist/index.d.ts` to confirm the return shape includes `accessToken`. If not, the field may be `sealedSession` or expose tokens via a different helper — adapt and report the deviation. The intent is "return the JWT the Convex client should send".
 
-- [ ] **Step 5.3: Typecheck**
+- [x] **Step 5.3: Typecheck**
 
 ```bash
 pnpm --filter dashboard typecheck
@@ -768,7 +768,7 @@ pnpm --filter dashboard typecheck
 
 Expected: 0-error exit.
 
-- [ ] **Step 5.4: Commit**
+- [x] **Step 5.4: Commit**
 
 ```bash
 git add apps/dashboard/app/providers.tsx apps/dashboard/app/api
@@ -789,13 +789,13 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 The root layout pulls Geist via `next/font` (matching Plan 2's website), loads `@repo/ui/styles/globals.css`, mounts the Convex provider. The `(auth)` route group is unprotected — `proxy.ts`'s matcher excludes `/callback`, and `/sign-in` is the unauth landing.
 
-- [ ] **Step 6.1: Write `apps/dashboard/app/globals.css`**
+- [x] **Step 6.1: Write `apps/dashboard/app/globals.css`**
 
 ```css
 @import "@repo/ui/styles/globals.css";
 ```
 
-- [ ] **Step 6.2: Write `apps/dashboard/app/layout.tsx`**
+- [x] **Step 6.2: Write `apps/dashboard/app/layout.tsx`**
 
 ```tsx
 import type { Metadata } from 'next';
@@ -827,13 +827,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 ```
 
-- [ ] **Step 6.3: Empty favicon**
+- [x] **Step 6.3: Empty favicon**
 
 ```bash
 touch apps/dashboard/app/favicon.ico
 ```
 
-- [ ] **Step 6.4: Write `apps/dashboard/app/(auth)/callback/route.ts`**
+- [x] **Step 6.4: Write `apps/dashboard/app/(auth)/callback/route.ts`**
 
 The AuthKit-supplied handler. After WorkOS redirects back from sign-in, this route exchanges the code for a session and sets the cookie.
 
@@ -845,7 +845,7 @@ export const GET = handleAuth();
 
 > If `handleAuth` lives at a different export path (e.g. `'@workos-inc/authkit-nextjs/dist/handleAuth'`), check the package's README or `dist/index.d.ts` and adapt. The intent is "AuthKit's official callback route handler".
 
-- [ ] **Step 6.5: Write `apps/dashboard/app/(auth)/sign-out/route.ts`**
+- [x] **Step 6.5: Write `apps/dashboard/app/(auth)/sign-out/route.ts`**
 
 ```ts
 import { signOutUrl } from '@repo/auth/server';
@@ -859,7 +859,7 @@ export async function GET() {
 
 > `signOutUrl` from `@repo/auth/server` (Plan 2 Task 7) wraps `@workos-inc/authkit-nextjs`'s sign-out. If its actual signature is different — e.g. it returns a URL string vs. a server action — adjust this route accordingly: in that case, redirect to the returned URL.
 
-- [ ] **Step 6.6: Write `apps/dashboard/app/(auth)/sign-in/page.tsx`**
+- [x] **Step 6.6: Write `apps/dashboard/app/(auth)/sign-in/page.tsx`**
 
 ```tsx
 import { signInUrl } from '@repo/auth/server';
@@ -878,7 +878,7 @@ export default async function SignInPage({
 
 Server-side redirect to the WorkOS-hosted sign-in page — no UI on our side, AuthKit's hosted page handles everything.
 
-- [ ] **Step 6.7: Typecheck**
+- [x] **Step 6.7: Typecheck**
 
 ```bash
 pnpm --filter dashboard typecheck
@@ -886,7 +886,7 @@ pnpm --filter dashboard typecheck
 
 Expected: 0-error exit.
 
-- [ ] **Step 6.8: Commit**
+- [x] **Step 6.8: Commit**
 
 ```bash
 git add apps/dashboard/app
@@ -902,7 +902,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 Every authenticated request needs to resolve "which org am I acting on?". The AuthKit JWT carries the active `organizationId` claim (set when the user picks an org during AuthKit sign-in). We map it to the Convex `organizations` row via the new `organizations.getByWorkosId` query (Task 0).
 
-- [ ] **Step 7.1: Write `apps/dashboard/lib/active-org.ts`**
+- [x] **Step 7.1: Write `apps/dashboard/lib/active-org.ts`**
 
 ```ts
 import 'server-only';
@@ -961,7 +961,7 @@ export async function readActiveOrg(): Promise<ActiveOrg> {
 
 > **API verification:** `session.organizationId`, `session.user.id/email/firstName/lastName` — names depend on AuthKit's session shape. Check `node_modules/@workos-inc/authkit-nextjs/dist/index.d.ts` and adapt. Same caveat as Task 5/6: deviations are likely; report any.
 
-- [ ] **Step 7.2: Typecheck**
+- [x] **Step 7.2: Typecheck**
 
 ```bash
 pnpm --filter dashboard typecheck
@@ -969,7 +969,7 @@ pnpm --filter dashboard typecheck
 
 Expected: 0-error exit. If `@repo/backend/_generated/dataModel` import path is wrong, check `packages/backend/package.json` exports — Plan 1 ships only `.` and `./schema` — the dataModel import may need `import type { Doc } from '@repo/backend';` if `Doc` is re-exported from `_generated/api`. Adapt and report.
 
-- [ ] **Step 7.3: Commit**
+- [x] **Step 7.3: Commit**
 
 ```bash
 git add apps/dashboard/lib/active-org.ts
@@ -986,7 +986,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 The `(app)` route group is everything that requires auth. Its layout reads the active org once and passes the org name to the nav. Nav has two links (Posts, Members, Domains) and a sign-out button.
 
-- [ ] **Step 8.1: Write `apps/dashboard/components/nav.tsx`**
+- [x] **Step 8.1: Write `apps/dashboard/components/nav.tsx`**
 
 ```tsx
 import Link from 'next/link';
@@ -1024,7 +1024,7 @@ export function Nav({ orgName, userEmail }: { orgName: string; userEmail: string
 }
 ```
 
-- [ ] **Step 8.2: Write `apps/dashboard/app/(app)/layout.tsx`**
+- [x] **Step 8.2: Write `apps/dashboard/app/(app)/layout.tsx`**
 
 ```tsx
 import { readActiveOrg } from '../../lib/active-org';
@@ -1041,7 +1041,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
 }
 ```
 
-- [ ] **Step 8.3: Typecheck + lint**
+- [x] **Step 8.3: Typecheck + lint**
 
 ```bash
 pnpm --filter dashboard typecheck && pnpm --filter dashboard lint
@@ -1049,7 +1049,7 @@ pnpm --filter dashboard typecheck && pnpm --filter dashboard lint
 
 Expected: 0-error exit on both.
 
-- [ ] **Step 8.4: Commit**
+- [x] **Step 8.4: Commit**
 
 ```bash
 git add apps/dashboard/components/nav.tsx apps/dashboard/app/\(app\)/layout.tsx
@@ -1068,7 +1068,7 @@ The home page reads two counts:
 - Posts in the active org via `api.posts.countByOrg` (uses the `postsByOrg` aggregate from Plan 1 Task 15).
 - Members in the active org — use `ctx.db.query('members').withIndex('by_org_id').collect().length`. There's no dedicated count function yet, so we add a small `members.countByOrg` query as part of this task.
 
-- [ ] **Step 9.1: Add `members.countByOrg` to backend**
+- [x] **Step 9.1: Add `members.countByOrg` to backend**
 
 Create `packages/backend/convex/members.ts`:
 
@@ -1110,7 +1110,7 @@ export const listByOrg = query({
 
 Verify codegen picks it up (background convex dev with timeout — same pattern as Task 0.2).
 
-- [ ] **Step 9.2: Write `apps/dashboard/app/(app)/page.tsx`**
+- [x] **Step 9.2: Write `apps/dashboard/app/(app)/page.tsx`**
 
 ```tsx
 import { fetchQuery } from 'convex/nextjs';
@@ -1154,7 +1154,7 @@ export default async function HomePage() {
 }
 ```
 
-- [ ] **Step 9.3: Typecheck**
+- [x] **Step 9.3: Typecheck**
 
 ```bash
 pnpm --filter dashboard typecheck && pnpm --filter @repo/backend test
@@ -1162,7 +1162,7 @@ pnpm --filter dashboard typecheck && pnpm --filter @repo/backend test
 
 Expected: 0-error typecheck. Tests still 8 passing.
 
-- [ ] **Step 9.4: Commit**
+- [x] **Step 9.4: Commit**
 
 ```bash
 git add packages/backend/convex/members.ts packages/backend/convex/_generated apps/dashboard/app/\(app\)/page.tsx
@@ -1179,7 +1179,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 Posts list reads `api.posts.listAllByOrg` (auth-gated query; the AuthKit JWT in the Convex client identifies the user, and `requireOrgMembership` validates membership server-side). Delete uses a server action wrapper around `api.posts.remove`.
 
-- [ ] **Step 10.1: Write `apps/dashboard/components/delete-button.tsx`**
+- [x] **Step 10.1: Write `apps/dashboard/components/delete-button.tsx`**
 
 ```tsx
 'use client';
@@ -1241,7 +1241,7 @@ export function DeleteButton({
 }
 ```
 
-- [ ] **Step 10.2: Write `apps/dashboard/app/(app)/posts/page.tsx`**
+- [x] **Step 10.2: Write `apps/dashboard/app/(app)/posts/page.tsx`**
 
 ```tsx
 import Link from 'next/link';
@@ -1317,7 +1317,7 @@ export default async function PostsPage() {
 }
 ```
 
-- [ ] **Step 10.3: Write `apps/dashboard/app/(app)/posts/actions.ts`**
+- [x] **Step 10.3: Write `apps/dashboard/app/(app)/posts/actions.ts`**
 
 ```ts
 'use server';
@@ -1335,7 +1335,7 @@ export async function deletePost(id: Id<'posts'>): Promise<void> {
 
 > `fetchMutation` from `convex/nextjs` propagates the AuthKit JWT to Convex automatically when the request flows through the Convex provider's auth setter (Task 5). For server-action paths Convex passes the cookie session directly to the deployment via `Convex-Auth` header. If you see "Not authenticated" errors, confirm `fetchMutation` is being called inside an authenticated request lifecycle.
 
-- [ ] **Step 10.4: Typecheck**
+- [x] **Step 10.4: Typecheck**
 
 ```bash
 pnpm --filter dashboard typecheck
@@ -1343,7 +1343,7 @@ pnpm --filter dashboard typecheck
 
 Expected: 0-error exit.
 
-- [ ] **Step 10.5: Commit**
+- [x] **Step 10.5: Commit**
 
 ```bash
 git add apps/dashboard/app/\(app\)/posts apps/dashboard/components/delete-button.tsx
@@ -1361,7 +1361,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 One client form component reused by `/posts/new` and `/posts/[id]/edit`. Submit flows through server actions that call `api.posts.create` / `api.posts.update`.
 
-- [ ] **Step 11.1: Write `apps/dashboard/components/post-form.tsx`**
+- [x] **Step 11.1: Write `apps/dashboard/components/post-form.tsx`**
 
 ```tsx
 'use client';
@@ -1472,7 +1472,7 @@ export function PostForm({
 }
 ```
 
-- [ ] **Step 11.2: Write `apps/dashboard/app/(app)/posts/new/page.tsx`**
+- [x] **Step 11.2: Write `apps/dashboard/app/(app)/posts/new/page.tsx`**
 
 ```tsx
 import { fetchMutation } from 'convex/nextjs';
@@ -1501,7 +1501,7 @@ export default async function NewPostPage() {
 }
 ```
 
-- [ ] **Step 11.3: Write `apps/dashboard/app/(app)/posts/[id]/edit/page.tsx`**
+- [x] **Step 11.3: Write `apps/dashboard/app/(app)/posts/[id]/edit/page.tsx`**
 
 ```tsx
 import { notFound } from 'next/navigation';
@@ -1559,7 +1559,7 @@ export default async function EditPostPage({
 >
 > (Append next to the other `posts.ts` exports. Membership check protects against another org's user fetching by id.)
 
-- [ ] **Step 11.4: Add `api.posts.getById`**
+- [x] **Step 11.4: Add `api.posts.getById`**
 
 In `packages/backend/convex/posts.ts`, append (next to the other queries):
 
@@ -1577,7 +1577,7 @@ export const getById = query({
 
 Run convex dev briefly to regenerate `_generated/api.d.ts` (background-task pattern, 25s timeout).
 
-- [ ] **Step 11.5: Typecheck**
+- [x] **Step 11.5: Typecheck**
 
 ```bash
 pnpm --filter dashboard typecheck && pnpm --filter @repo/backend test
@@ -1585,7 +1585,7 @@ pnpm --filter dashboard typecheck && pnpm --filter @repo/backend test
 
 Expected: 0-error typecheck. Tests still 8 passing.
 
-- [ ] **Step 11.6: Commit**
+- [x] **Step 11.6: Commit**
 
 ```bash
 git add packages/backend/convex/posts.ts packages/backend/convex/_generated apps/dashboard/components/post-form.tsx apps/dashboard/app/\(app\)/posts
@@ -1601,7 +1601,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 Read-only list of org members with their email + role. The `members.listByOrg` query was added in Task 9.
 
-- [ ] **Step 12.1: Write `apps/dashboard/app/(app)/members/page.tsx`**
+- [x] **Step 12.1: Write `apps/dashboard/app/(app)/members/page.tsx`**
 
 ```tsx
 import { fetchQuery } from 'convex/nextjs';
@@ -1655,7 +1655,7 @@ export default async function MembersPage() {
 }
 ```
 
-- [ ] **Step 12.2: Typecheck**
+- [x] **Step 12.2: Typecheck**
 
 ```bash
 pnpm --filter dashboard typecheck
@@ -1663,7 +1663,7 @@ pnpm --filter dashboard typecheck
 
 Expected: 0-error exit.
 
-- [ ] **Step 12.3: Commit**
+- [x] **Step 12.3: Commit**
 
 ```bash
 git add apps/dashboard/app/\(app\)/members
@@ -1680,7 +1680,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 The Vercel client wraps three endpoints: `add domain to project`, `verify domain`, `remove domain`. When `VERCEL_API_TOKEN` is unset, every method returns `{ disabled: true }` — the UI surfaces a banner instead of breaking. This makes `VERCEL_*` keys truly optional in dev.
 
-- [ ] **Step 13.1: Relax `vercelApiSchema` in `packages/env/src/dashboard.ts`**
+- [x] **Step 13.1: Relax `vercelApiSchema` in `packages/env/src/dashboard.ts`**
 
 Find the import + spread:
 
@@ -1720,7 +1720,7 @@ export const vercelApiSchema = {
 } as const;
 ```
 
-- [ ] **Step 13.2: Write `apps/dashboard/lib/vercel.ts`**
+- [x] **Step 13.2: Write `apps/dashboard/lib/vercel.ts`**
 
 ```ts
 import 'server-only';
@@ -1796,7 +1796,7 @@ export const vercelEnabled = isEnabled;
 
 > Vercel REST API URL versions (`/v9`, `/v10`) come from current Vercel docs. If the response shape differs in 2026 (the API has been stable since 2023), surface the deviation but keep the function signatures.
 
-- [ ] **Step 13.3: Typecheck both packages**
+- [x] **Step 13.3: Typecheck both packages**
 
 ```bash
 pnpm --filter @repo/env typecheck && pnpm --filter dashboard typecheck
@@ -1804,7 +1804,7 @@ pnpm --filter @repo/env typecheck && pnpm --filter dashboard typecheck
 
 Expected: 0-error exit on both.
 
-- [ ] **Step 13.4: Verify env:check still passes for dashboard with empty VERCEL_***
+- [x] **Step 13.4: Verify env:check still passes for dashboard with empty VERCEL_***
 
 Edit `apps/dashboard/.env.local` to leave `VERCEL_*` blank, then:
 
@@ -1814,7 +1814,7 @@ pnpm env:check
 
 Expected: `✓ dashboard pass`. (Previously failed because `.min(1)` rejected blank values.)
 
-- [ ] **Step 13.5: Commit**
+- [x] **Step 13.5: Commit**
 
 ```bash
 git add packages/env/src/serverShared.ts apps/dashboard/lib/vercel.ts
@@ -1834,7 +1834,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 The dashboard's domains page reads `api.domains.listByOrg` from Convex (NEW — Plan 1 didn't include this), shows each row with verification status, and an "Add domain" form. Adding a domain (a) calls Vercel's `POST /domains`, (b) inserts a Convex `domains` row tagged unverified, and (c) starts a polling cron via `verifyDomains` (already wired in Plan 1 Task 14).
 
-- [ ] **Step 14.1: Add domains backend functions in `packages/backend/convex/domains.ts`**
+- [x] **Step 14.1: Add domains backend functions in `packages/backend/convex/domains.ts`**
 
 ```ts
 import { v } from 'convex/values';
@@ -1898,7 +1898,7 @@ export const remove = mutation({
 
 Run convex dev (background-task pattern) to regenerate codegen.
 
-- [ ] **Step 14.2: Write `apps/dashboard/components/domain-row.tsx`**
+- [x] **Step 14.2: Write `apps/dashboard/components/domain-row.tsx`**
 
 ```tsx
 'use client';
@@ -1976,7 +1976,7 @@ export function DomainRow({
 }
 ```
 
-- [ ] **Step 14.3: Write `apps/dashboard/app/(app)/domains/actions.ts`**
+- [x] **Step 14.3: Write `apps/dashboard/app/(app)/domains/actions.ts`**
 
 ```ts
 'use server';
@@ -2023,7 +2023,7 @@ export async function removeDomainAction(domainId: Id<'domains'>, host: string) 
 }
 ```
 
-- [ ] **Step 14.4: Write `apps/dashboard/app/(app)/domains/page.tsx`**
+- [x] **Step 14.4: Write `apps/dashboard/app/(app)/domains/page.tsx`**
 
 ```tsx
 import { fetchQuery } from 'convex/nextjs';
@@ -2113,7 +2113,7 @@ export default async function DomainsPage() {
 }
 ```
 
-- [ ] **Step 14.5: Write `apps/dashboard/app/(app)/domains/verify/route.ts`**
+- [x] **Step 14.5: Write `apps/dashboard/app/(app)/domains/verify/route.ts`**
 
 A POST endpoint the cron job (Plan 1 Task 14's `verifyDomains`) can target — re-polls Vercel for every unverified domain across the deployment.
 
@@ -2169,7 +2169,7 @@ export async function POST() {
 >
 > The cron's call to this endpoint should be guarded — for the template, leave it unauthenticated and document the expectation. *Real apps should use a shared secret.*
 
-- [ ] **Step 14.6: Add `organizations.list` to backend**
+- [x] **Step 14.6: Add `organizations.list` to backend**
 
 In `packages/backend/convex/organizations.ts`, append:
 
@@ -2182,7 +2182,7 @@ export const list = query({
 
 Run convex dev briefly to regenerate.
 
-- [ ] **Step 14.7: Typecheck + lint**
+- [x] **Step 14.7: Typecheck + lint**
 
 ```bash
 pnpm --filter dashboard typecheck && pnpm --filter dashboard lint
@@ -2191,7 +2191,7 @@ pnpm --filter @repo/backend typecheck && pnpm --filter @repo/backend test
 
 Expected: 0-error exits. Tests still 8 passing.
 
-- [ ] **Step 14.8: Commit**
+- [x] **Step 14.8: Commit**
 
 ```bash
 git add packages/backend/convex/domains.ts packages/backend/convex/organizations.ts packages/backend/convex/_generated apps/dashboard/app/\(app\)/domains apps/dashboard/components/domain-row.tsx
@@ -2204,7 +2204,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 After all per-task work, boot the dev server end-to-end and confirm the unauthenticated user is redirected to AuthKit.
 
-- [ ] **Step 15.1: Start dev server in background**
+- [x] **Step 15.1: Start dev server in background**
 
 ```bash
 cd /home/jgigg/code/turborepo-convex-workos-template
@@ -2216,7 +2216,7 @@ tail -25 /tmp/dashboard-dev.log
 
 Expected: log shows `Ready in <ms>` and `Local: http://localhost:3001`.
 
-- [ ] **Step 15.2: HTTP smoke test**
+- [x] **Step 15.2: HTTP smoke test**
 
 ```bash
 echo "---HOMEPAGE (unauthenticated)---"
@@ -2230,14 +2230,14 @@ Expected:
 - `/` returns a 307/302 redirect to `/sign-in?returnPathname=/`. (Without real WorkOS env, the redirect chain may end at an error page — that's fine for smoke; we're proving the proxy.ts gate fires.)
 - `/sign-in` returns a 307/302 redirect to a WorkOS-hosted URL.
 
-- [ ] **Step 15.3: Cleanup**
+- [x] **Step 15.3: Cleanup**
 
 ```bash
 kill $DASHPID 2>/dev/null || true
 wait $DASHPID 2>/dev/null || true
 ```
 
-- [ ] **Step 15.4: Build verification**
+- [x] **Step 15.4: Build verification**
 
 ```bash
 pnpm --filter dashboard build
@@ -2253,7 +2253,7 @@ If the build fails on `withAuth` / `useAuth` API mismatches: that means Plan 2's
 
 Final verification gate. Same shape as Plan 1 Task 18.
 
-- [ ] **Step 16.1: Run all the green-checks**
+- [x] **Step 16.1: Run all the green-checks**
 
 ```bash
 cd /home/jgigg/code/turborepo-convex-workos-template
@@ -2275,7 +2275,7 @@ Expected:
 
 If any task fails, stop and report which one with full output.
 
-- [ ] **Step 16.2: Tag the milestone**
+- [x] **Step 16.2: Tag the milestone**
 
 ```bash
 git tag -a dashboard-complete -m "Plan 3: dashboard with posts/members/domains UI"

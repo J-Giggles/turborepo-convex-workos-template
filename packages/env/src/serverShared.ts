@@ -17,11 +17,15 @@ export const workosSessionSchema = {
   WORKOS_REDIRECT_URI: z.string().url(),
 } as const;
 
-/** Vercel REST API — used by dashboard for custom-domain provisioning. */
+/**
+ * Vercel REST API — used by dashboard for custom-domain provisioning.
+ * All keys are optional: the dashboard's Vercel client (apps/dashboard/lib/vercel.ts)
+ * surfaces an "integration disabled" banner when any are unset.
+ */
 export const vercelApiSchema = {
-  VERCEL_API_TOKEN: z.string().min(1),
-  VERCEL_TEAM_ID: z.string().min(1),
-  VERCEL_PROJECT_ID_TENANT: z.string().min(1),
+  VERCEL_API_TOKEN: z.string().optional(),
+  VERCEL_TEAM_ID: z.string().optional(),
+  VERCEL_PROJECT_ID_TENANT: z.string().optional(),
 } as const;
 
 /** Optional CI deploy key. Apps don't need this unless deploying via CI. */

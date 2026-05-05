@@ -11,10 +11,12 @@
 import type * as _helpers_auth from "../_helpers/auth.js";
 import type * as aggregates from "../aggregates.js";
 import type * as crons from "../crons.js";
-import type * as debugUtils from "../debugUtils.js";
+import type * as domains from "../domains.js";
 import type * as http from "../http.js";
 import type * as integrations from "../integrations.js";
+import type * as members from "../members.js";
 import type * as migrations from "../migrations.js";
+import type * as organizations from "../organizations.js";
 import type * as posts from "../posts.js";
 import type * as rateLimits from "../rateLimits.js";
 import type * as scheduledJobs from "../scheduledJobs.js";
@@ -31,10 +33,12 @@ declare const fullApi: ApiFromModules<{
   "_helpers/auth": typeof _helpers_auth;
   aggregates: typeof aggregates;
   crons: typeof crons;
-  debugUtils: typeof debugUtils;
+  domains: typeof domains;
   http: typeof http;
   integrations: typeof integrations;
+  members: typeof members;
   migrations: typeof migrations;
+  organizations: typeof organizations;
   posts: typeof posts;
   rateLimits: typeof rateLimits;
   scheduledJobs: typeof scheduledJobs;

@@ -409,7 +409,7 @@ The single load-bearing function for the whole app. Called by `proxy.ts` and by 
 
 The cache is implemented with Next.js 16's [`'use cache'` directive](https://nextjs.org/docs/app/getting-started/cache-components) (the modern replacement for `unstable_cache`) so we get tag-based invalidation and the right runtime semantics. We tag every entry `tenant:{host}` so domain CRUD in the dashboard can call `updateTag('tenant:{host}')` to invalidate.
 
-- [ ] **Step 3.1: Write `apps/tenant/lib/resolve-tenant.ts`**
+- [x] **Step 3.1: Write `apps/tenant/lib/resolve-tenant.ts`** _(deviation: imports from `next/cache` use the GA names `cacheTag`/`cacheLife`, not the deprecated `unstable_*` aliases. Both work in Next.js 16.2; the un-prefixed names are the documented form. Also added `./_generated/dataModel` to `@repo/backend` package exports so the `Doc<>` type import the plan specifies actually resolves — Plan 3 needs the same.)_
 
 ```ts
 import 'server-only';
@@ -456,7 +456,7 @@ export async function resolveTenant(host: string): Promise<ResolvedTenant> {
 
 > If `unstable_cacheTag` / `unstable_cacheLife` are unavailable in your Next.js 16 build (the API is GA in 16.1+), fall back to `unstable_cache` with `tags` and a `revalidate` option. Adapt and report.
 
-- [ ] **Step 3.2: Typecheck**
+- [x] **Step 3.2: Typecheck**
 
 ```bash
 pnpm --filter tenant typecheck
@@ -464,7 +464,7 @@ pnpm --filter tenant typecheck
 
 Expected: 0-error exit. `'use cache'` requires Next.js 16's Cache Components flag — should already be on by default. If TypeScript complains about `'use cache'`, check that the project's tsconfig extends Plan 1's `nextjs` preset (which has the Next plugin enabled).
 
-- [ ] **Step 3.3: Commit**
+- [x] **Step 3.3: Commit**
 
 ```bash
 git add apps/tenant/lib/resolve-tenant.ts

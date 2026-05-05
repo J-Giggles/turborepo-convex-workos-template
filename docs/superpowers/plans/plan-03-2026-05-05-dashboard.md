@@ -1834,7 +1834,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 The dashboard's domains page reads `api.domains.listByOrg` from Convex (NEW — Plan 1 didn't include this), shows each row with verification status, and an "Add domain" form. Adding a domain (a) calls Vercel's `POST /domains`, (b) inserts a Convex `domains` row tagged unverified, and (c) starts a polling cron via `verifyDomains` (already wired in Plan 1 Task 14).
 
-- [ ] **Step 14.1: Add domains backend functions in `packages/backend/convex/domains.ts`**
+- [x] **Step 14.1: Add domains backend functions in `packages/backend/convex/domains.ts`**
 
 ```ts
 import { v } from 'convex/values';
@@ -1898,7 +1898,7 @@ export const remove = mutation({
 
 Run convex dev (background-task pattern) to regenerate codegen.
 
-- [ ] **Step 14.2: Write `apps/dashboard/components/domain-row.tsx`**
+- [x] **Step 14.2: Write `apps/dashboard/components/domain-row.tsx`**
 
 ```tsx
 'use client';
@@ -1976,7 +1976,7 @@ export function DomainRow({
 }
 ```
 
-- [ ] **Step 14.3: Write `apps/dashboard/app/(app)/domains/actions.ts`**
+- [x] **Step 14.3: Write `apps/dashboard/app/(app)/domains/actions.ts`**
 
 ```ts
 'use server';
@@ -2023,7 +2023,7 @@ export async function removeDomainAction(domainId: Id<'domains'>, host: string) 
 }
 ```
 
-- [ ] **Step 14.4: Write `apps/dashboard/app/(app)/domains/page.tsx`**
+- [x] **Step 14.4: Write `apps/dashboard/app/(app)/domains/page.tsx`**
 
 ```tsx
 import { fetchQuery } from 'convex/nextjs';
@@ -2113,7 +2113,7 @@ export default async function DomainsPage() {
 }
 ```
 
-- [ ] **Step 14.5: Write `apps/dashboard/app/(app)/domains/verify/route.ts`**
+- [x] **Step 14.5: Write `apps/dashboard/app/(app)/domains/verify/route.ts`**
 
 A POST endpoint the cron job (Plan 1 Task 14's `verifyDomains`) can target — re-polls Vercel for every unverified domain across the deployment.
 
@@ -2169,7 +2169,7 @@ export async function POST() {
 >
 > The cron's call to this endpoint should be guarded — for the template, leave it unauthenticated and document the expectation. *Real apps should use a shared secret.*
 
-- [ ] **Step 14.6: Add `organizations.list` to backend**
+- [x] **Step 14.6: Add `organizations.list` to backend**
 
 In `packages/backend/convex/organizations.ts`, append:
 
@@ -2182,7 +2182,7 @@ export const list = query({
 
 Run convex dev briefly to regenerate.
 
-- [ ] **Step 14.7: Typecheck + lint**
+- [x] **Step 14.7: Typecheck + lint**
 
 ```bash
 pnpm --filter dashboard typecheck && pnpm --filter dashboard lint
@@ -2191,7 +2191,7 @@ pnpm --filter @repo/backend typecheck && pnpm --filter @repo/backend test
 
 Expected: 0-error exits. Tests still 8 passing.
 
-- [ ] **Step 14.8: Commit**
+- [x] **Step 14.8: Commit**
 
 ```bash
 git add packages/backend/convex/domains.ts packages/backend/convex/organizations.ts packages/backend/convex/_generated apps/dashboard/app/\(app\)/domains apps/dashboard/components/domain-row.tsx

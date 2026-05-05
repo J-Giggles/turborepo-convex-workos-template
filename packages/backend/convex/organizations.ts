@@ -11,3 +11,8 @@ export const getByWorkosId = query({
       .unique();
   },
 });
+
+export const list = query({
+  args: {},
+  handler: async (ctx) => await ctx.db.query('organizations').collect(),
+});

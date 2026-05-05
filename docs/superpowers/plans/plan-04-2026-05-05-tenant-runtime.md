@@ -958,7 +958,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(tenant)
 
 Plan 3 already calls `revalidatePath('/posts')` and `revalidatePath('/domains')` after dashboard mutations. Add `revalidateTag` for the corresponding tenant cache entries so a new post or a verified domain shows up on the public site within seconds, not at the next `cacheLife('hours')` boundary.
 
-- [ ] **Step 8.1: Read existing `apps/dashboard/app/(app)/posts/actions.ts`**
+- [x] **Step 8.1: Read existing `apps/dashboard/app/(app)/posts/actions.ts`**
 
 Confirm it currently looks like:
 
@@ -978,7 +978,7 @@ export async function deletePost(id: Id<'posts'>): Promise<void> {
 
 (Plan 3 Task 10 wrote this. If the implementer of Plan 3 deviated, follow what's actually in the file.)
 
-- [ ] **Step 8.2: Add tenant-side revalidation to `deletePost`**
+- [x] **Step 8.2: Add tenant-side revalidation to `deletePost`** _(deviation: used `updateTag` not `revalidateTag` — Next.js 16 `revalidateTag` requires a profile arg; `updateTag` is the single-arg Server-Action form for read-your-own-writes)_
 
 Replace with:
 
@@ -1002,7 +1002,7 @@ export async function deletePost(id: Id<'posts'>): Promise<void> {
 }
 ```
 
-- [ ] **Step 8.3: Update `posts/new/page.tsx` and `posts/[id]/edit/page.tsx` server actions**
+- [x] **Step 8.3: Update `posts/new/page.tsx` and `posts/[id]/edit/page.tsx` server actions** _(deviation: `updateTag` instead of `revalidateTag` per 8.2 note; edit page hoists `postOrgId`/`postSlug` to closure-captured consts alongside `postId`)_
 
 For `new/page.tsx`'s `create` action (added in Plan 3 Task 11.2):
 
@@ -1029,7 +1029,7 @@ async function save(values: PostFormValues) {
 
 (Add `import { revalidateTag } from 'next/cache';` at the top of each file.)
 
-- [ ] **Step 8.4: Update `apps/dashboard/app/(app)/domains/actions.ts`**
+- [x] **Step 8.4: Update `apps/dashboard/app/(app)/domains/actions.ts`** _(deviation: `updateTag` instead of `revalidateTag`; only fires on the verified branch — does not invalidate when `result.data.verified === false`)_
 
 After `verifyDomainAction` flips a domain to verified, invalidate both the host-keyed cache (so `proxy.ts` re-resolves) AND the slug-keyed cache. The slug entry is keyed `tenant:slug:{slug}` — we need to look up the org first.
 
@@ -1045,7 +1045,7 @@ revalidateTag(`tenant:${host}`);
 
 > If you want exact invalidation, fetch the domain row before verify and read `domain.orgId` → `org.slug`. Plan 4 keeps it best-effort to avoid an extra round trip on the verify path.
 
-- [ ] **Step 8.5: Typecheck**
+- [x] **Step 8.5: Typecheck** _(also ran `pnpm lint`, `pnpm test`, `pnpm --filter dashboard build` — all green)_
 
 ```bash
 pnpm --filter dashboard typecheck
@@ -1053,7 +1053,7 @@ pnpm --filter dashboard typecheck
 
 Expected: 0-error exit.
 
-- [ ] **Step 8.6: Commit**
+- [x] **Step 8.6: Commit**
 
 ```bash
 git add apps/dashboard/app/\(app\)/posts/actions.ts apps/dashboard/app/\(app\)/posts/new/page.tsx apps/dashboard/app/\(app\)/posts/\[id\]/edit/page.tsx apps/dashboard/app/\(app\)/domains/actions.ts

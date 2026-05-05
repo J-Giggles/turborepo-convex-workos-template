@@ -3,7 +3,7 @@
 import { fetchMutation } from 'convex/nextjs';
 import { api } from '@repo/backend';
 import type { Id } from '@repo/backend/_generated/dataModel';
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, updateTag } from 'next/cache';
 import { addDomain, verifyDomain, removeDomain, vercelEnabled } from '../../../lib/vercel';
 
 export async function createDomain(formData: FormData) {
@@ -31,6 +31,12 @@ export async function verifyDomainAction(domainId: Id<'domains'>, host: string) 
   const result = await verifyDomain(host);
   if (!result.disabled && result.data.verified) {
     await fetchMutation(api.domains.setVerified, { id: domainId, verified: true });
+    // Invalidate the host-keyed tenant cache so proxy.ts re-resolves on next request.
+    // updateTag (not revalidateTag) for Server Action read-your-own-writes; Next.js 16
+    // revalidateTag now requires a 2nd profile arg, updateTag is the single-arg form.
+    // Slug-side invalidation is best-effort omitted — would require an extra
+    // round trip to read domain.orgId → org.slug. The hours-long cacheLife self-heals.
+    updateTag(`tenant:${host}`);
   }
   revalidatePath('/domains');
 }

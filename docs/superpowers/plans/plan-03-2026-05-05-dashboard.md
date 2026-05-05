@@ -2204,7 +2204,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(dashboa
 
 After all per-task work, boot the dev server end-to-end and confirm the unauthenticated user is redirected to AuthKit.
 
-- [ ] **Step 15.1: Start dev server in background**
+- [x] **Step 15.1: Start dev server in background**
 
 ```bash
 cd /home/jgigg/code/turborepo-convex-workos-template
@@ -2216,7 +2216,7 @@ tail -25 /tmp/dashboard-dev.log
 
 Expected: log shows `Ready in <ms>` and `Local: http://localhost:3001`.
 
-- [ ] **Step 15.2: HTTP smoke test**
+- [x] **Step 15.2: HTTP smoke test**
 
 ```bash
 echo "---HOMEPAGE (unauthenticated)---"
@@ -2230,14 +2230,14 @@ Expected:
 - `/` returns a 307/302 redirect to `/sign-in?returnPathname=/`. (Without real WorkOS env, the redirect chain may end at an error page — that's fine for smoke; we're proving the proxy.ts gate fires.)
 - `/sign-in` returns a 307/302 redirect to a WorkOS-hosted URL.
 
-- [ ] **Step 15.3: Cleanup**
+- [x] **Step 15.3: Cleanup**
 
 ```bash
 kill $DASHPID 2>/dev/null || true
 wait $DASHPID 2>/dev/null || true
 ```
 
-- [ ] **Step 15.4: Build verification**
+- [x] **Step 15.4: Build verification**
 
 ```bash
 pnpm --filter dashboard build

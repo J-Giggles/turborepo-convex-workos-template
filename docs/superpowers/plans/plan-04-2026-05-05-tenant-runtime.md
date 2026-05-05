@@ -330,7 +330,7 @@ git -c user.name=Jordan -c user.email=jordan@lifepass.eu commit -m "feat(tenant)
 
 > The existing `tenantServerSchema` makes WorkOS server creds REQUIRED. For Plan 4's pure-public-read scope they're not actually used, but they're declared so the dashboard's Plan 3 sign-in flow can re-authenticate against a tenant subdomain later. If you'd prefer a leaner schema for Plan 4 (drop server creds entirely until they're needed), open a follow-up: this plan keeps the schema as-is for forward compatibility.
 
-- [ ] **Step 2.1: Write `apps/tenant/env.ts`**
+- [x] **Step 2.1: Write `apps/tenant/env.ts`**
 
 ```ts
 import { createTenantEnv } from '@repo/env/tenant';
@@ -338,7 +338,7 @@ import { createTenantEnv } from '@repo/env/tenant';
 export const env = createTenantEnv();
 ```
 
-- [ ] **Step 2.2: Write `apps/tenant/.env.local.example`**
+- [x] **Step 2.2: Write `apps/tenant/.env.local.example`**
 
 ```bash
 # Required by every Next.js app to talk to Convex.
@@ -360,7 +360,7 @@ WORKOS_COOKIE_PASSWORD=00000000000000000000000000000000
 WORKOS_REDIRECT_URI=http://localhost:3002/callback
 ```
 
-- [ ] **Step 2.3: Verify env:check skips when no .env.local exists**
+- [x] **Step 2.3: Verify env:check skips when no .env.local exists**
 
 ```bash
 pnpm env:check
@@ -368,7 +368,7 @@ pnpm env:check
 
 Expected: `· tenant  skip — no file at apps/tenant/.env.local`. (Plus other apps' status from prior plans.)
 
-- [ ] **Step 2.4: Create a working `.env.local` for dev**
+- [x] **Step 2.4: Create a working `.env.local` for dev**
 
 ```bash
 cat > apps/tenant/.env.local <<'EOF'
@@ -383,7 +383,7 @@ WORKOS_REDIRECT_URI=http://localhost:3002/callback
 EOF
 ```
 
-- [ ] **Step 2.5: Verify env:check passes for tenant**
+- [x] **Step 2.5: Verify env:check passes for tenant**
 
 ```bash
 pnpm env:check
@@ -391,7 +391,7 @@ pnpm env:check
 
 Expected: `✓ tenant pass`.
 
-- [ ] **Step 2.6: Commit**
+- [x] **Step 2.6: Commit**
 
 ```bash
 git add apps/tenant/env.ts apps/tenant/.env.local.example
